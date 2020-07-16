@@ -1,0 +1,22 @@
+
+syntax = "proto3";
+package pb;
+option go_package = ".;pb";
+enum CommandList
+{
+    MT_INVALID = 0;
+    MT_SERVER_TYPE_START = 1 ;
+    // MT_TO_CENTER
+    // MT_ADD_COMPONENT
+	MT_ADD_ENGINE_COMPONENT = 2 ;
+
+    // MT_CENTER_TO_OTHER
+    MT_ADD_ENGINE_COMPONENT_ACK = 10 ;
+    MT_ADD_ENGINE_COMPONENT_LIST = 11 ;
+
+    // MT_CLIENT_TO_GATE
+    MT_GET_ALL_LOGIN_COMPONENT = 20 ;
+
+    // MT_SYNC_PROPERTY
+    MT_SYNC_PROXY_PROPERTY = 30;
+}
