@@ -1,8 +1,8 @@
 package znet
 
 import (
-	"Zmin/engine/zlog"
-	"Zmin/engine/zutil"
+	"github.com/ouczbs/Zmin/engine/zlog"
+	"github.com/ouczbs/Zmin/engine/zutil"
 	"net"
 	"time"
 )

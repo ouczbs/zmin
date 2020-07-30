@@ -1,11 +1,11 @@
 package main
 
 import (
-	"Zmin/component/center"
-	"Zmin/engine/zcache"
-	"Zmin/engine/zlog"
-	"Zmin/engine/zmodel"
-	"Zmin/engine/zproto/pb"
+	"github.com/ouczbs/Zmin/component/center"
+	"github.com/ouczbs/Zmin/engine/zcache"
+	"github.com/ouczbs/Zmin/engine/zlog"
+	"github.com/ouczbs/Zmin/engine/zmodel"
+	"github.com/ouczbs/Zmin/engine/zproto/pb"
 	"go.mongodb.org/mongo-driver/bson"
 	"os"
 	"os/exec"

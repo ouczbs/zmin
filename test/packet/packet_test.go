@@ -1,8 +1,8 @@
 package packet
 
 import (
-	"Zmin/engine/zconf"
-	"Zmin/engine/zlog"
+	"github.com/ouczbs/Zmin/engine/zconf"
+	"github.com/ouczbs/Zmin/engine/zlog"
 	"testing"
 	"time"
 )

@@ -1,7 +1,7 @@
 package zclass
 
 import (
-	"Zmin/engine/zconf"
+	"github.com/ouczbs/Zmin/engine/zconf"
 	"sync"
 )
 

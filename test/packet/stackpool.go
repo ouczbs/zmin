@@ -1,7 +1,7 @@
 package packet
 
 import (
-	"Zmin/engine/zclass"
+	"github.com/ouczbs/Zmin/engine/zclass"
 )
 
 type UPacketStackPool struct {

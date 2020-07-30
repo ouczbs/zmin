@@ -1,8 +1,8 @@
 package znet
 
 import (
-	"Zmin/engine/zconf"
-	"Zmin/engine/zlog"
+	"github.com/ouczbs/Zmin/engine/zconf"
+	"github.com/ouczbs/Zmin/engine/zlog"
 	"encoding/binary"
 	"unsafe"
 )

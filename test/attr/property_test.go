@@ -1,8 +1,8 @@
 package attr
 
 import (
-	"Zmin/engine/zattr"
-	"Zmin/engine/zlog"
+	"github.com/ouczbs/Zmin/engine/zattr"
+	"github.com/ouczbs/Zmin/engine/zlog"
 	"testing"
 )
 

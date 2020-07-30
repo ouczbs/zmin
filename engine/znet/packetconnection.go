@@ -1,7 +1,7 @@
 package znet
 
 import (
-	"Zmin/engine/zlog"
+	"github.com/ouczbs/Zmin/engine/zlog"
 	"net"
 )
 

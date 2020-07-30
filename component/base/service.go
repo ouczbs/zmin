@@ -1,12 +1,12 @@
 package base
 
 import (
-	"Zmin/engine/zattr"
-	"Zmin/engine/zclass"
-	"Zmin/engine/zconf"
-	"Zmin/engine/zlog"
-	"Zmin/engine/znet"
-	"Zmin/engine/zproto/pb"
+	"github.com/ouczbs/Zmin/engine/zattr"
+	"github.com/ouczbs/Zmin/engine/zclass"
+	"github.com/ouczbs/Zmin/engine/zconf"
+	"github.com/ouczbs/Zmin/engine/zlog"
+	"github.com/ouczbs/Zmin/engine/znet"
+	"github.com/ouczbs/Zmin/engine/zproto/pb"
 	"flag"
 	"net"
 	"os"

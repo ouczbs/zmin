@@ -1,11 +1,11 @@
 package login
 
 import (
-	"Zmin/component/base"
-	"Zmin/engine/zattr"
-	"Zmin/engine/zconf"
-	"Zmin/engine/zlog"
-	"Zmin/engine/znet"
+	"github.com/ouczbs/Zmin/component/base"
+	"github.com/ouczbs/Zmin/engine/zattr"
+	"github.com/ouczbs/Zmin/engine/zconf"
+	"github.com/ouczbs/Zmin/engine/zlog"
+	"github.com/ouczbs/Zmin/engine/znet"
 )
 
 type ULoginService struct {
@@ -14,21 +14,21 @@ type ULoginService struct {
 
 func NewLoginService() *ULoginService {
 	return &ULoginService{
-		UService:base.NewService(reqHandleMaps),
+		UService: base.NewService(reqHandleMaps),
 	}
 }
-func (service * ULoginService)Run() {
+func (service *ULoginService) Run() {
 	service.UService.Run()
 	service.initService()
 	go service.MessageLoop()
 	service.ConnectToCenter()
 	znet.ServeTCPForever(service.Config.ListenAddr, service)
 }
-func (service *ULoginService) initService(){
-	logFile,ok := service.GetProperty(zattr.StringLogFile).(string)
-	if !ok{
+func (service *ULoginService) initService() {
+	logFile, ok := service.GetProperty(zattr.StringLogFile).(string)
+	if !ok {
 		logFile = zconf.LoginConfig.LogFile
 	}
-	zlog.SetOutput([]string{ "stderr", logFile })
+	zlog.SetOutput([]string{"stderr", logFile})
 	service.InitDownHandles()
 }

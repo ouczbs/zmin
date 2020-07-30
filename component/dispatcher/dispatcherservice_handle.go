@@ -1,12 +1,12 @@
 package dispatcher
 
 import (
-	"Zmin/engine/zattr"
-	"Zmin/engine/zconf"
-	"Zmin/engine/zlog"
-	"Zmin/engine/znet"
-	"Zmin/engine/zproto"
-	"Zmin/engine/zproto/pb"
+	"github.com/ouczbs/Zmin/engine/zattr"
+	"github.com/ouczbs/Zmin/engine/zconf"
+	"github.com/ouczbs/Zmin/engine/zlog"
+	"github.com/ouczbs/Zmin/engine/znet"
+	"github.com/ouczbs/Zmin/engine/zproto"
+	"github.com/ouczbs/Zmin/engine/zproto/pb"
 )
 
 func (service UDispatcherService) MessageLoop() {

@@ -1,7 +1,7 @@
 package zmodel
 
 import (
-	"Zmin/engine/zlog"
+	"github.com/ouczbs/Zmin/engine/zlog"
 	"go.mongodb.org/mongo-driver/bson"
 	"reflect"
 	"strings"

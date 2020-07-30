@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Zmin/component/gate"
+	"github.com/ouczbs/Zmin/component/gate"
 )
 
 func main()  {

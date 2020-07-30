@@ -80,3 +80,18 @@ Zmin/engine/znet.ServeTCPForever
 	E:/ouczbs/Zmin/engine/znet/servertcp.go:19
 Zmin/component/center.(*UCenterService).Run
 	E:/ouczbs/Zmin/component/center/centerservice.go:24
+2020-07-30T16:59:01.130+0800	INFO	znet/servertcp.go:38	Listening on TCP: 127.0.0.1:9999 ...
+2020-07-30T16:59:04.117+0800	INFO	znet/servertcp.go:55	Connection from: 127.0.0.1:55966
+2020-07-30T16:59:04.118+0800	DEBUG	center/centerservice_handle.go:85	AddEngineComponent:8 DISPATCHER
+2020-07-30T16:59:04.260+0800	INFO	znet/servertcp.go:55	Connection from: 127.0.0.1:55967
+2020-07-30T16:59:04.261+0800	INFO	znet/servertcp.go:55	Connection from: 127.0.0.1:55968
+2020-07-30T16:59:04.261+0800	DEBUG	center/centerservice_handle.go:85	AddEngineComponent:2 LOGIN
+2020-07-30T16:59:04.261+0800	DEBUG	center/centerservice_handle.go:85	AddEngineComponent:3 LOGIN
+2020-07-30T16:59:04.669+0800	INFO	znet/servertcp.go:55	Connection from: 127.0.0.1:55973
+2020-07-30T16:59:04.670+0800	DEBUG	center/centerservice_handle.go:85	AddEngineComponent:5 GATE
+2020-07-30T16:59:04.804+0800	INFO	znet/servertcp.go:55	Connection from: 127.0.0.1:55974
+2020-07-30T16:59:04.804+0800	DEBUG	center/centerservice_handle.go:85	AddEngineComponent:2 CENTER
+2020-07-30T16:59:04.805+0800	INFO	znet/servertcp.go:55	Connection from: 127.0.0.1:55975
+2020-07-30T16:59:04.805+0800	INFO	znet/servertcp.go:55	Connection from: 127.0.0.1:55976
+2020-07-30T16:59:04.805+0800	DEBUG	center/centerservice_handle.go:85	AddEngineComponent:7 DISPATCHER
+2020-07-30T16:59:04.806+0800	DEBUG	center/centerservice_handle.go:85	AddEngineComponent:4 LOGIN

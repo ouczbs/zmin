@@ -1,6 +1,6 @@
 package znet
 
-import "Zmin/engine/zconf"
+import "github.com/ouczbs/Zmin/engine/zconf"
 
 var (
 	messagePool = NewMessagePool(zconf.CPoolMessageSize)

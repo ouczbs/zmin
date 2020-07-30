@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Zmin/component/login"
+	"github.com/ouczbs/Zmin/component/login"
 )
 
 func main()  {

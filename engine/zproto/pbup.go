@@ -1,9 +1,9 @@
 package zproto
 
 import (
-	"Zmin/engine/zlog"
-	"Zmin/engine/znet"
-	"Zmin/engine/zutil"
+	"github.com/ouczbs/Zmin/engine/zlog"
+	"github.com/ouczbs/Zmin/engine/znet"
+	"github.com/ouczbs/Zmin/engine/zutil"
 )
 
 func sendPbMessage(proxy *UClientProxy , message IReflectMessage, wrap *UWrapMessage , messageType TMessageType)error{

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Zmin/component/dispatcher"
+	"github.com/ouczbs/Zmin/component/dispatcher"
 )
 
 func main()  {

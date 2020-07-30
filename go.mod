@@ -2,7 +2,7 @@ module Zmin
 
 go 1.14
 
-replace Zmin => ./Zmin
+replace github.com/ouczbs/Zmin => ./Zmin
 
 require (
 	github.com/go-redis/redis/v8 v8.0.0-beta.6

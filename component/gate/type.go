@@ -1,9 +1,9 @@
 package gate
 
 import (
-	"Zmin/component/base"
-	"Zmin/engine/zconf"
-	"Zmin/engine/znet"
+	"github.com/ouczbs/Zmin/component/base"
+	"github.com/ouczbs/Zmin/engine/zconf"
+	"github.com/ouczbs/Zmin/engine/znet"
 )
 
 type (

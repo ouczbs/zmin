@@ -1,9 +1,9 @@
 package base
 
 import (
-	"Zmin/engine/zclass"
-	"Zmin/engine/zconf"
-	"Zmin/engine/znet"
+	"github.com/ouczbs/Zmin/engine/zclass"
+	"github.com/ouczbs/Zmin/engine/zconf"
+	"github.com/ouczbs/Zmin/engine/znet"
 )
 
 type (

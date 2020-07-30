@@ -1,11 +1,11 @@
 package center
 
 import (
-	"Zmin/component/base"
-	"Zmin/engine/zattr"
-	"Zmin/engine/zconf"
-	"Zmin/engine/zlog"
-	"Zmin/engine/znet"
+	"github.com/ouczbs/Zmin/component/base"
+	"github.com/ouczbs/Zmin/engine/zattr"
+	"github.com/ouczbs/Zmin/engine/zconf"
+	"github.com/ouczbs/Zmin/engine/zlog"
+	"github.com/ouczbs/Zmin/engine/znet"
 )
 
 type UCenterService struct {
