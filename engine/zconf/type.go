@@ -1,19 +1,19 @@
 package zconf
 type (
-	TSize = uint32
-	TCmd = uint32
-	TCallId = uint32
+	TSize = int32
+	TCmd = int32
+	TCallId = int32
 	TMessageType = uint16
-	TSequence = uint32
-	TCode = uint32
-	TEnum = uint32
-	TComponentId = uint32
+	TSequence = int32
+	TCode = int32
+	TEnum = int32
+	TComponentId = int32
 
 )
-type UBaseConfig struct{
+type UServiceConfig struct{
 	ListenAddr    string
-	ComponentType uint32
-	ComponentId   uint32
+	ComponentType int32
+	ComponentId   int32
 }
 type UCenterConfig struct{
 	ListenAddr    string

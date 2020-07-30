@@ -1,17 +1,30 @@
 package zattr
+
 import (
-"Zmin/engine/zconf"
-"Zmin/engine/zlog"
-"Zmin/engine/znet"
+	"Zmin/engine/zconf"
+	"Zmin/engine/zlog"
+	"Zmin/engine/znet"
 	"Zmin/engine/zproto"
 	"Zmin/engine/zproto/pb"
+	"strconv"
 )
 
 const (
 	_MT_SYNC_PROXY_PROPERTY =  znet.TCmd(pb.CommandList_MT_SYNC_PROXY_PROPERTY)
+	_MT_SET_REMOTE_PROPERTY =  znet.TCmd(pb.CommandList_MT_SET_REMOTE_PROPERTY)
 	_MT_SYNC_PROPERTY = zconf.MT_SYNC_PROPERTY
 )
 
+func SetRemoteProperty(proxy * UClientProxy , key TEnum, value interface{})  {
+	property := WriteProperty(value)
+	if property == nil {
+		return
+	}
+	sync := &pb.SET_REMOTE_PROPERTY{}
+	sync.PropertyMapList = append(sync.PropertyMapList, &pb.PropertyMap{Key: key,Value: property})
+	request := znet.NewRequest(_MT_SET_REMOTE_PROPERTY , _MT_SYNC_PROPERTY)
+	zproto.SendPbMessage(proxy , sync , request)
+}
 //设置链接属性
 func SyncProxyProperty(proxy * UClientProxy , key TEnum, value interface{}) {
 	property := WriteProperty(value)
@@ -49,6 +62,25 @@ func ReadProperty(p * pb.Property) interface{}{
 		return p.PFloat
 	}
 }
+func ConvertProperty(ts string , s string) interface{}{
+	t,err := strconv.Atoi(ts)
+	if err != nil{
+		return nil
+	}
+	switch pb.Property_Type(t) {
+	case pb.Property_Type_INT32:
+		i,_ := strconv.ParseUint(s,10,32)
+		return i
+	case pb.Property_Type_String:
+		return s
+	case pb.Property_Type_BOOL:
+		b,_ := strconv.ParseBool(s)
+		return b
+	default:
+		f,_ := strconv.ParseFloat(s,32)
+		return f
+	}
+}
 func WriteProperty(v interface{})* pb.Property{
 	option := OptionOf(v)
 	if option == nil {return nil}
@@ -63,7 +95,7 @@ func WithBool(v bool)FPropertyOption{
 		property.Type = pb.Property_Type_BOOL
 	}
 }
-func WithInt32(v uint32)FPropertyOption{
+func WithInt32(v int32)FPropertyOption{
 	return func(property *pb.Property) {
 		property.PInt = v
 		property.Type = pb.Property_Type_INT32
@@ -90,13 +122,13 @@ func OptionOf(v interface{}) FPropertyOption {
 	case []byte:
 		return WithString(string(v.([]byte)))
 	case uint32 :
-		return WithInt32(v.(uint32))
+		return  WithInt32(int32(v.(uint32)))
 	case int32:
-		return WithInt32(uint32(v.(int32)))
+		return WithInt32(v.(int32))
 	case int:
-		return WithInt32(uint32(v.(int)))
+		return WithInt32(int32(v.(int)))
 	case float32:
-		return WithInt32(uint32(v.(float32)))
+		return WithInt32(int32(v.(float32)))
 	case float64:
 		return WithInt64(uint64(v.(float64)))
 	case int64:

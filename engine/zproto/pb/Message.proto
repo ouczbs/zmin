@@ -18,24 +18,24 @@ enum Property_Type{
 }
 message Property{
     Property_Type type = 1;
-    uint32 p_int = 2;
+    int32 p_int = 2;
     string  p_string = 3;
     uint64 p_float = 4;
     bool p_bool = 5;
 }
 message PropertyMap{
-    uint32 key = 1;
+    int32 key = 1;
     Property value = 2;
 }
 message ADD_ENGINE_COMPONENT
 {
   COMPONENT_TYPE type   = 1;
   string listen_addr = 2;
-  uint32 component_id = 3;
+  int32 component_id = 3;
 }
 message ADD_ENGINE_COMPONENT_ACK
 {
-    uint32 component_id = 1;
+    int32 component_id = 1;
     repeated ADD_ENGINE_COMPONENT component_list = 2;
 }
 message GET_ALL_LOGIN_COMPONENT{
@@ -45,5 +45,8 @@ message GET_ALL_LOGIN_COMPONENT_ACK{
     repeated string login_list = 1;
 }
 message SYNC_PROXY_PROPERTY{
+    repeated PropertyMap property_map_list = 1;
+}
+message SET_REMOTE_PROPERTY{
     repeated PropertyMap property_map_list = 1;
 }

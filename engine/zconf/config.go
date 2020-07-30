@@ -7,11 +7,19 @@ func GetCenterConfig()*UCenterConfig{
 		LogLevel:"debug",
 	}
 }
+
+var (
+	CenterConfig = GetCenterConfig()
+	LoginConfig = GetLoginConfig()
+	GateConfig = GetGateConfig()
+	DispatcherConfig = GetDispatcherConfig()
+)
+
 func GetLoginConfig()*ULoginConfig{
 	return &ULoginConfig{
 		ListenAddr:"127.0.0.1:11001",
 		HTTPAddr:"127.0.0.1:11001",
-		LogFile:"dispatcher.log",
+		LogFile:"login.log",
 		LogLevel:"debug",
 	}
 }
@@ -19,7 +27,7 @@ func GetGateConfig()*UGateConfig{
 	return  &UGateConfig{
 		ListenAddr:"127.0.0.1:13001",
 		HTTPAddr:"127.0.0.1:13001",
-		LogFile:"dispatcher.log",
+		LogFile:"gate.log",
 		LogLevel:"debug",
 	}
 }
@@ -35,7 +43,7 @@ func GetGameConfig() *UGameConfig {
 	return &UGameConfig{
 		ListenAddr:"127.0.0.1:14001",
 		HTTPAddr:"127.0.0.1:14001",
-		LogFile:"dispatcher.log",
+		LogFile:"game.log",
 		LogLevel:"debug",
 	}
 }

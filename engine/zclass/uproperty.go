@@ -2,7 +2,6 @@ package zclass
 
 import (
 	"Zmin/engine/zconf"
-	"Zmin/engine/zlog"
 	"sync"
 )
 
@@ -27,11 +26,8 @@ func (pro *UProperty) SetProperty(key TEnum, value interface{}) {
 //获取链接属性
 func (pro *UProperty) GetProperty(key TEnum) interface{}{
 	pro.propertyLock.RLock()
-	value, ok := pro.Property[key]
+	value, _ := pro.Property[key]
 	pro.propertyLock.RUnlock()
-	if !ok {
-		zlog.Infof("GetProperty error , key = %s " , key)
-	}
 	return value
 }
 //移除链接属性

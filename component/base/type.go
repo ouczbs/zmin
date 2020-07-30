@@ -11,7 +11,7 @@ type (
 	UMessage = znet.UMessage
 	URequest = znet.URequest
 	UProperty = zclass.UProperty
-
+	UServiceConfig = zconf.UServiceConfig
 	FRequestHandle = znet.FRequestHandle
 
 	IService = znet.IService

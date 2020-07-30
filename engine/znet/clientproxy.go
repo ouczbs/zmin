@@ -35,12 +35,12 @@ func (proxy * UClientProxy) ClientDisconnect(){
 }
 func (proxy *UClientProxy) Serve() {
 	// Serve the dispatcher client from server / gate
-	zlog.Infof("New dispatcher client: %s", proxy)
 	for {
 		packet, err := proxy.RecvPacket()
 		if err != nil {
 			packet.Release()
 			proxy.ClientDisconnect()
+			zlog.Debugf("Serve RecvPacket error ",err  )
 			return
 		}
 		messageType := packet.ReadMessageType()

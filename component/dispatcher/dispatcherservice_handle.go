@@ -41,8 +41,9 @@ func (service *UDispatcherService) ConnectToCenter() {
 	}
 	request := znet.NewRequest(TCmd(pb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_TO_CENTER)
 	message := &pb.ADD_ENGINE_COMPONENT{
-		Type:       pb.COMPONENT_TYPE_DISPATCHER,
-		ListenAddr: service.Config.ListenAddr,
+		ComponentId: service.Config.ComponentId,
+		Type:        pb.COMPONENT_TYPE_DISPATCHER,
+		ListenAddr:  service.Config.ListenAddr,
 	}
 	zproto.SendPbMessage(centerProxy, message, request)
 	request.Release()
@@ -53,7 +54,6 @@ func (service *UDispatcherService) AddEngineComponentAck(proxy *UClientProxy, re
 		zlog.Error("AddEngineComponent recv error request : ", proxy, request)
 		return
 	}
-	proxy.SetProperty(zattr.Uint32ComponentId, uint32(message.ComponentId))
-	proxy.SetProperty(zattr.Uint32ComponentType, uint32(pb.COMPONENT_TYPE_CENTER))
-	zlog.Debug("AddEngineComponentAck:attr k v: ", zattr.Uint32ComponentId, message.ComponentId)
+	proxy.SetProperty(zattr.Int32ComponentId, int32(message.ComponentId))
+	proxy.SetProperty(zattr.Int32ComponentType, int32(pb.COMPONENT_TYPE_CENTER))
 }

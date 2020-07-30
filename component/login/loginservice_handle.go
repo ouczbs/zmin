@@ -42,6 +42,7 @@ func (service *ULoginService) ConnectToCenter() {
 	}
 	request := znet.NewRequest(TCmd(pb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_TO_CENTER)
 	message := &pb.ADD_ENGINE_COMPONENT{
+		ComponentId: service.Config.ComponentId,
 		Type:       pb.COMPONENT_TYPE_LOGIN,
 		ListenAddr: service.Config.ListenAddr,
 	}
@@ -54,8 +55,8 @@ func (service *ULoginService) AddEngineComponentAck(proxy *UClientProxy, request
 		zlog.Error("AddEngineComponent recv error request : ", proxy, request)
 		return
 	}
-	proxy.SetProperty(zattr.Uint32ComponentId, uint32(message.ComponentId))
-	proxy.SetProperty(zattr.Uint32ComponentType, uint32(pb.COMPONENT_TYPE_CENTER))
+	proxy.SetProperty(zattr.Int32ComponentId, int32(message.ComponentId))
+	proxy.SetProperty(zattr.Int32ComponentType, int32(pb.COMPONENT_TYPE_CENTER))
 	for _, login := range message.ComponentList {
 		gameProxyMaps[login.ComponentId] = service.MakeClientProxy(string(login.ListenAddr))
 	}
@@ -67,4 +68,5 @@ func (service *ULoginService) AddEngineComponent(proxy *UClientProxy, request *U
 		return
 	}
 	gameProxyMaps[message.ComponentId] = service.MakeClientProxy(string(message.ListenAddr))
+	zlog.Debug("AddEngineComponent " , message.Type , message.ListenAddr)
 }

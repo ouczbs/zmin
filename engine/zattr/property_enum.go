@@ -1,14 +1,16 @@
 package zattr
-type PropertyType = TEnum
+type TPropertyType = TEnum
 
 // bytes uint32 uint64 bool -- > s i f b
 const (
 	// -- service proxy property
-	Invalid  PropertyType = 0 + iota
-	Uint32ComponentId
-	Uint32ComponentType
+	Invalid  TPropertyType = 0 + iota
+	Int32ComponentId
+	Int32ComponentType
 	StringListenAddr
 	// -- service property
 	BoolIsLoadedService
 	StringCenterAddr
+	StringComponentName
+	StringLogFile
 )

@@ -2,6 +2,7 @@ package dispatcher
 
 import (
 	"Zmin/component/base"
+	"Zmin/engine/zattr"
 	"Zmin/engine/zconf"
 	"Zmin/engine/zlog"
 	"Zmin/engine/znet"
@@ -9,21 +10,24 @@ import (
 
 type UDispatcherService struct {
 	*UService
-	Config              * zconf.UDispatcherConfig
 }
 func NewDispatcherService() *UDispatcherService {
 	return &UDispatcherService{
 		UService:base.NewService(reqHandleMaps),
-		Config: zconf.GetDispatcherConfig(),
 	}
 }
 func (service * UDispatcherService)Run() {
+	service.UService.Run()
 	service.initService()
 	go service.MessageLoop()
 	service.ConnectToCenter()
 	znet.ServeTCPForever(service.Config.ListenAddr, service)
 }
 func (service *UDispatcherService) initService(){
-	zlog.SetOutput([]string{ "stderr", service.Config.LogFile })
+	logFile,ok := service.GetProperty(zattr.StringLogFile).(string)
+	if !ok{
+		logFile = zconf.DispatcherConfig.LogFile
+	}
+	zlog.SetOutput([]string{ "stderr", logFile })
 	service.InitDownHandles()
 }

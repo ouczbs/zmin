@@ -20,71 +20,240 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1675b8a9-2e30-49e9-8d44-e2613eeef7fd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/api/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/api/rank.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/api/upload.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/api/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/api/video.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/auth/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/cache/keys.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/cache/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/conf/conf.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/conf/i18n.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/conf/locales/zh-cn.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/docker-compose.yml.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/fabfile.py.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/middleware/auth.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/middleware/cors.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/middleware/session.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/model/init.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/model/migration.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/model/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/model/video.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/serializer/common.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/serializer/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/serializer/video.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/server/router.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/service/create_video_service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/service/daily_rank_service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/service/delete_video_service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/service/list_video_service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/service/show_video_service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/service/update_video_service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/service/upload_token_service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/service/user_login_service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/service/user_register_service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/dist/favicon-16x16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/dist/favicon-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/dist/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/dist/oauth2-redirect.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/dist/swagger-ui-bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/dist/swagger-ui-bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/dist/swagger-ui-standalone-preset.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/dist/swagger-ui-standalone-preset.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/dist/swagger-ui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/dist/swagger-ui.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/dist/swagger-ui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/dist/swagger-ui.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/index.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/paths/api/v1/video/item.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/paths/api/v1/video/list.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/schemas/common.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/schemas/video.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/swagger/swagger.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/tasks/cron.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/tasks/rank.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/giligili-master/util/common.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/bench/tcp_conn/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/bench/ws_conn/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/cmd/logic/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/cmd/tcp_conn/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/cmd/tcp_conn/run.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/cmd/ws_conn/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/config/conf.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/config/dev_conf.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/config/local_conf.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/config/pre_conf.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/config/prod_conf.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/docs/image/大群消息群发.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/docs/image/心跳.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/docs/image/消息单发.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/docs/image/消息群发.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/docs/image/登录.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/docs/image/离线消息同步.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/docs/plan.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/docs/心跳.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/docs/消息单发.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/docs/消息群发.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/docs/登录.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/docs/离线消息同步.puml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/api/interceptor.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/api/logic_client_ext.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/api/logic_client_ext_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/api/logic_int.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/api/logic_int_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/api/logic_server_ext.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/api/logic_server_ext_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/api/run.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/cache/app.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/cache/device_ip.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/cache/group.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/cache/group_user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/cache/group_user_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/cache/large_group_user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/cache/seq.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/cache/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/cache/user_device.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/cache/util.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/dao/app.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/dao/device.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/dao/device_ack.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/dao/device_ack_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/dao/device_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/dao/group.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/dao/group_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/dao/group_user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/dao/group_user_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/dao/message.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/dao/message_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/dao/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/dao/user_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/db/mysql.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/db/redis.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/model/app.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/model/device.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/model/group.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/model/group_user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/model/message.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/model/message_body.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/model/sender.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/model/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/service/app.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/service/auth.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/service/device.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/service/device_ack.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/service/group.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/service/group_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/service/group_user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/service/message.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/service/message_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/service/seq.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/service/seq_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/logic/service/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/tcp_conn/conn_int.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/tcp_conn/deliver_message.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/tcp_conn/handler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/tcp_conn/mq.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/tcp_conn/tcp_server.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/ws_conn/conn_int.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/ws_conn/deliver_message.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/ws_conn/manager.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/ws_conn/ws_conn_context.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/internal/ws_conn/ws_server.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/gerrors/define.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/gerrors/error.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/gerrors/error_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/grpclib/addr_picker.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/grpclib/addrs_resolver.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/grpclib/ctx.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/logger/logger.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/pb/conn.int.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/pb/error.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/pb/logic.int.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/pb/logic_client.ext.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/pb/logic_server.ext.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/pb/tcp.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/proto/conn.int.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/proto/error.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/proto/logic.int.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/proto/logic_client.ext.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/proto/logic_server.ext.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/proto/tcp.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/rpc_cli/interceptor.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/rpc_cli/rpc_cli.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/session/session.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/util/aes.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/util/aes_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/util/json.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/util/panic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/util/string.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/util/time.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/util/uid.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/util/uid/uid.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/pkg/util/uid/uid_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/sql/create_table.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/test/tcp_conn/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitHub/gim-master/test/ws_conn/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/github.com/!one!of!one/xxhash@v1.2.2/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/github.com/benbjohnson/clock@v1.0.3/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/github.com/cespare/xxhash@v1.1.0/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/github.com/go-redis/redis/v8@v8.0.0-beta.6/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/github.com/go-stack/stack@v1.8.0/go.mod" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/github.com/golang/protobuf@v1.4.2/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/github.com/golang/snappy@v0.0.1/go.mod" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/github.com/google/go-cmp@v0.5.0/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/github.com/google/gofuzz@v1.0.0/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/github.com/onsi/gomega@v1.7.0/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/github.com/stretchr/testify@v1.6.1/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/go.mongodb.org/mongo-driver@v1.3.5/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/go.opentelemetry.io/otel@v0.7.0/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/golang.org/x/crypto@v0.0.0-20191011191535-87dc89f01550/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/golang.org/x/exp@v0.0.0-20200513190911-00229845015e/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/golang.org/x/mod@v0.1.1-0.20191107180719-034126e5016b/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/golang.org/x/net@v0.0.0-20190923162816-aa69164e4478/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/golang.org/x/sync@v0.0.0-20190423024810-112230192c58/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/golang.org/x/sys@v0.0.0-20191010194322-b09406accb47/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/golang.org/x/text@v0.3.2/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/golang.org/x/text@v0.3.3/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/golang.org/x/tools@v0.0.0-20200207183749-b753a1ba74fa/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/google.golang.org/genproto@v0.0.0-20200526211855-cb27e3aa2013/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/google.golang.org/grpc@v1.30.0/go.mod" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/google.golang.org/protobuf@v1.25.0/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/gopkg.in/yaml.v2@v2.2.7/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zmin.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/engine/zcache/mongo.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/engine/zcache/mongo_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/engine/zcache/redis.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/engine/zcache/redis_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/engine/zcache/type.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/engine/zmodel/schema.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/engine/zmodel/service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/engine/zmodel/service_init.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/engine/zmodel/service_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/engine/zmodel/type.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gate.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/login.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebook/.ipynb_checkpoints/pb-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebook/.ipynb_checkpoints/run-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebook/pb.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebook/run.ipynb" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tree/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/base/baseutil.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/base/service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/base/type.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/center/centerservice.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/center/centerservice_handle.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/center/type.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/dispatcher/dispatcherservice.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/dispatcher/dispatcherservice_handle.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/dispatcher/type.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/gate/gateservice.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/gate/gateservice_handle.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/gate/type.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/login/loginservice.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/login/loginservice_handle.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/login/type.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zattr/property.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zattr/property_enum.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zattr/type.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zclass/uproperty.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zclass/ustackpool.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zconf/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zconf/const.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zconf/iface.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zconf/type.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zlog/zlog.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zlog/zlog_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/znet/clientproxy.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/znet/message.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/znet/message_pool.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/znet/packet.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/znet/packetConnection.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/znet/packet_pool.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/znet/request.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/znet/request_pool.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/znet/servertcp.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/znet/type.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zproto/pb/EnumMessage.pb.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zproto/pb/EnumMessage.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zproto/pb/Message.pb.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zproto/pb/Message.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zproto/pb/WrapMessage.pb.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zproto/pb/WrapMessage.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zproto/pbdown.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zproto/pbup.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zproto/type.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zutil/func.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engine/zutil/type.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run/center/runcenter.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run/dispatcher/rundispatcher.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run/gate/rungate.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run/login/runlogin.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/.ipynb_checkpoints/pb-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/attr/property.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/attr/property_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/attr/type.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/packet/chanpool.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/packet/packet.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/packet/packet_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/packet/stackpool.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/packet/type.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/pb.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../.vs/Survive/v15/.suo" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../.vs/Survive/v15/Browse.VC.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../.vs/Survive/v15/Solution.VC.db" beforeDir="false" />
@@ -968,6 +1137,41 @@
       <change beforePath="$PROJECT_DIR$/../../ThirdParty/Asio/include/asio/write_at.hpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../ThirdParty/Asio/include/asio/yield.hpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../desktop.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/center.log" beforeDir="false" afterPath="$PROJECT_DIR$/center.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/base/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/base/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/base/type.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/base/type.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/center/centerservice.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/center/centerservice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/center/centerservice_handle.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/center/centerservice_handle.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/center/type.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/center/type.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/dispatcher/dispatcherservice.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/dispatcher/dispatcherservice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/dispatcher/dispatcherservice_handle.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/dispatcher/dispatcherservice_handle.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/gate/gateservice.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/gate/gateservice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/gate/gateservice_handle.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/gate/gateservice_handle.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/login/loginservice.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/login/loginservice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/login/loginservice_handle.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/login/loginservice_handle.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/login/type.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/login/type.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dispatcher.log" beforeDir="false" afterPath="$PROJECT_DIR$/dispatcher.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zattr/property.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zattr/property.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zattr/property_enum.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zattr/property_enum.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zclass/uproperty.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zclass/uproperty.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zconf/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zconf/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zconf/iface.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zconf/iface.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zconf/type.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zconf/type.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/znet/clientproxy.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/znet/clientproxy.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zproto/pb/EnumMessage.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zproto/pb/EnumMessage.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zproto/pb/EnumMessage.proto" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zproto/pb/EnumMessage.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zproto/pb/Message.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zproto/pb/Message.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zproto/pb/Message.proto" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zproto/pb/Message.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zproto/pb/WrapMessage.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zproto/pb/WrapMessage.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zproto/pb/WrapMessage.proto" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zproto/pb/WrapMessage.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/center/runcenter.go" beforeDir="false" afterPath="$PROJECT_DIR$/run/center/runcenter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run/dispatcher.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/attr/property_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/attr/property_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pb.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/test/pb.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -978,12 +1182,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Go File" />
+        <option value="Go Application" />
       </list>
     </option>
   </component>
   <component name="GOROOT" path="D:\Go" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
@@ -1003,7 +1208,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="DefaultGoTemplateProperty" value="Go Application" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -1012,7 +1217,8 @@
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GitHub/goworld-master" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="go.dep" />
   </component>
   <component name="RecentsManager">
@@ -1023,64 +1229,72 @@
       <recent name="E:\ouczbs\Zmin\engine\znet" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\ouczbs\Zmin\engine\zkvdb" />
+      <recent name="E:\ouczbs\Zmin\engine\zkvdb\redis" />
       <recent name="E:\ouczbs\Zmin\engine\zproto" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build Zmin/run/center">
-    <configuration name="go build Zmin/run/center" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Build.go build Zmin">
+    <configuration name="go build Zmin" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="zmin" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/run/center/runcenter.go" />
-      <package value="Zmin/run/center" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="Zmin" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build Zmin/run/dispatcher" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TestNewMongoClient in Zmin/engine/zkvdb" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="zmin" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/run/dispatcher/rundispatcher.go" />
-      <package value="Zmin/run/dispatcher" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build Zmin/run/gate" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="zmin" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/run/gate/rungate.go" />
-      <package value="Zmin/run/gate" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build Zmin/run/login" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="zmin" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/run/login/runlogin.go" />
-      <package value="Zmin/run/login" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestMarsh in Zmin/test/attr" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="zmin" />
-      <working_directory value="$PROJECT_DIR$/test/attr" />
+      <working_directory value="$PROJECT_DIR$/engine/zkvdb" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="Zmin/test/attr" />
+      <package value="Zmin/engine/zkvdb" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestMarsh$" />
+      <pattern value="^TestNewMongoClient$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestTag in Zmin/engine/zmodel (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="zmin" />
+      <working_directory value="$PROJECT_DIR$/engine/zmodel" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="Zmin/engine/zmodel" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestTag$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestTag in Zmin/engine/zmodel (2)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="zmin" />
+      <working_directory value="$PROJECT_DIR$/engine/zmodel" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="Zmin/engine/zmodel" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestTag$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestTag in Zmin/engine/zmodel" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="zmin" />
+      <working_directory value="$PROJECT_DIR$/engine/zmodel" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="Zmin/engine/zmodel" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestTag$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build Zmin/run/gate" />
-        <item itemvalue="Go Build.go build Zmin/run/login" />
-        <item itemvalue="Go Build.go build Zmin/run/center" />
-        <item itemvalue="Go Test.TestMarsh in Zmin/test/attr" />
-        <item itemvalue="Go Build.go build Zmin/run/dispatcher" />
+        <item itemvalue="Go Build.go build Zmin" />
+        <item itemvalue="Go Test.TestTag in Zmin/engine/zmodel (2)" />
+        <item itemvalue="Go Test.TestTag in Zmin/engine/zmodel (1)" />
+        <item itemvalue="Go Test.TestTag in Zmin/engine/zmodel" />
+        <item itemvalue="Go Test.TestNewMongoClient in Zmin/engine/zkvdb" />
       </list>
     </recent_temporary>
   </component>
@@ -1119,50 +1333,74 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1594873927125">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596068386620">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1594873927125" />
-    <state width="1860" height="228" key="GridCell.Tab.0.bottom" timestamp="1594898835027">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596068386620" />
+    <state x="698" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596098769198">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="228" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594898835027" />
-    <state width="1860" height="228" key="GridCell.Tab.0.center" timestamp="1594898835027">
+    <state x="698" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1596098769198" />
+    <state x="656" y="144" key="#go_build_Zmin" timestamp="1596092525418">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="228" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594898835027" />
-    <state width="1860" height="228" key="GridCell.Tab.0.left" timestamp="1594898835027">
+    <state x="656" y="144" key="#go_build_Zmin/0.0.1920.1040@0.0.1920.1040" timestamp="1596092525418" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1596087083136">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="228" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594898835027" />
-    <state width="1860" height="228" key="GridCell.Tab.0.right" timestamp="1594898835027">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596087083136" />
+    <state width="1860" height="246" key="GridCell.Tab.0.bottom" timestamp="1596097335296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="228" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594898835027" />
-    <state width="1860" height="232" key="GridCell.Tab.1.bottom" timestamp="1594898633573">
+    <state width="1860" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596097335296" />
+    <state width="1860" height="246" key="GridCell.Tab.0.center" timestamp="1596097335296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="232" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594898633573" />
-    <state width="1860" height="232" key="GridCell.Tab.1.center" timestamp="1594898633573">
+    <state width="1860" height="246" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596097335296" />
+    <state width="1860" height="246" key="GridCell.Tab.0.left" timestamp="1596097335296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="232" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594898633573" />
-    <state width="1860" height="232" key="GridCell.Tab.1.left" timestamp="1594898633573">
+    <state width="1860" height="246" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596097335296" />
+    <state width="1860" height="246" key="GridCell.Tab.0.right" timestamp="1596097335296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="232" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594898633573" />
-    <state width="1860" height="232" key="GridCell.Tab.1.right" timestamp="1594898633573">
+    <state width="1860" height="246" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596097335296" />
+    <state width="1877" height="220" key="GridCell.Tab.1.bottom" timestamp="1596092155063">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="232" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594898633573" />
+    <state width="1877" height="220" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596092155063" />
+    <state width="1877" height="220" key="GridCell.Tab.1.center" timestamp="1596092155063">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="220" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596092155063" />
+    <state width="1877" height="220" key="GridCell.Tab.1.left" timestamp="1596092155063">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="220" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596092155063" />
+    <state width="1877" height="220" key="GridCell.Tab.1.right" timestamp="1596092155063">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="220" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596092155063" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1594696198095">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1594696198095" />
+    <state x="753" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594953237955">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="753" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1594953237955" />
     <state x="504" y="249" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1594874078636">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="504" y="249" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1594874078636" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1596064492726">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596064492726" />
+    <state x="682" y="431" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1595049861973">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="682" y="431" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595049861973" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1171,5 +1409,10 @@
         <breakpoint type="DlvErrorBreakpoint" />
       </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GoTestRunConfiguration">
+        <watch expression="*(*uint)(unsafe.Pointer(field))" language="go" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

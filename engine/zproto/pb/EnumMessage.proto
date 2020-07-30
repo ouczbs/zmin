@@ -19,4 +19,5 @@ enum CommandList
 
     // MT_SYNC_PROPERTY
     MT_SYNC_PROXY_PROPERTY = 30;
+    MT_SET_REMOTE_PROPERTY =31;
 }
