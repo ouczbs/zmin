@@ -11,6 +11,7 @@ type (
 	UMessage = znet.UMessage
 	URequest = znet.URequest
 	UService = base.UService
+	UPacket = znet.UPacket
 	FRequestHandle = znet.FRequestHandle
 
 	TCmd = zconf.TCmd
@@ -23,5 +24,6 @@ var (
 	centerProxy * UClientProxy
 
 	gameProxyMaps = make(map[TComponentId]*UClientProxy)
-	clientProxyMaps = make(map[TComponentId]*UClientProxy)
+	gameMessageMaps = make(map[TMessageType]*UClientProxy)
+
 )

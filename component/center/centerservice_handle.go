@@ -18,7 +18,7 @@ func (service UCenterService) MessageLoop() {
 			packet := message.Packet
 			switch messageType {
 			case zconf.MT_TO_CENTER:
-				zproto.PbMessageHandle(proxy, packet)
+				zproto.PbMessageHandle(proxy, packet ,message.Cmd)
 			default:
 
 			}
@@ -31,8 +31,8 @@ func (service UCenterService) MessageLoop() {
 	}
 }
 func (service *UCenterService) UtilBroadcastAddEngineComponent(message *pb.ADD_ENGINE_COMPONENT, componentMaps TProxyMap) {
-	request := znet.NewRequest(TCmd(pb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_BROADCAST)
-	packet := zproto.MakePbMessagePacket(message, request)
+	request := znet.NewRequest(TCmd(pb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_BROADCAST , message)
+	packet := zproto.MakePbMessagePacket(request)
 	for _, comp := range componentMaps {
 		comp.SendPacket(packet)
 	}
@@ -50,8 +50,8 @@ func (service *UCenterService) UtilAddEngineComponentAck(proxy *UClientProxy, co
 			message.ComponentList = append(message.ComponentList, component)
 		}
 	}
-	request := znet.NewRequest(TCmd(pb.CommandList_MT_ADD_ENGINE_COMPONENT_ACK), zconf.MT_FROM_CENTER)
-	zproto.ResponseMessage(proxy, message, request)
+	request := znet.NewRequest(TCmd(pb.CommandList_MT_ADD_ENGINE_COMPONENT_ACK), zconf.MT_FROM_CENTER,message)
+	zproto.ResponseMessage(proxy, request)
 	request.Release()
 }
 func (service *UCenterService) AddEngineComponent(proxy *UClientProxy, request *URequest) {

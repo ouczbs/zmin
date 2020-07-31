@@ -9,10 +9,12 @@ import (
 )
 
 type (
+	TSequence = zconf.TSequence
 	TSize = zconf.TSize
 	TCode = zconf.TCode
 	TCmd = zconf.TCmd
 	TEnum =zconf.TEnum
+	TComponentId = zconf.TComponentId
 
 	TMessageType = zconf.TMessageType
 	TCallId = zconf.TCallId
@@ -37,5 +39,6 @@ const (
 	_CMinPacketBuffer = zconf.CMinPacketBuffer
 
 	_CPacketHeadSize = zconf.CPacketHeadSize
-	_CPacketMessageHeadSize = _CPacketHeadSize + zconf.CPacketMessageTypeSize
+	_CPacketMessageTypeSize = _CPacketHeadSize + zconf.CPacketMessageTypeSize
+	_CPacketMessageHeadSize = _CPacketHeadSize + zconf.CPacketMessageTypeSize + zconf.CPacketRequestTypeSize
 )

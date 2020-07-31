@@ -21,7 +21,5 @@ func (stack * URequestPool) Pop() * URequest{
 	return object.(*URequest)
 }
 func (stack * URequestPool) New() * URequest{
-	request := &URequest{}
-	request.Init()
-	return request
+	return &URequest{}
 }

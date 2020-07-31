@@ -20,7 +20,5 @@ func (stack * UMessagePool) Pop() * UMessage{
 	return object.(*UMessage)
 }
 func (stack * UMessagePool) New() * UMessage{
-	packet := &UMessage{}
-	packet.Init()
-	return packet
+	return &UMessage{}
 }

@@ -20,7 +20,7 @@ func TestTag(t *testing.T) {
 	//	ListenAddr: "127.0.0.1:9999",
 	//}
 	//zlog.Debug(service.M())
-	//zcache.MongoClient.UpdateOrInsert(service,bson.M{"id":service.Id})
+	//zcache.GetMongoClient().UpdateOrInsert(service,bson.M{"id":service.Id})
 	//service.InsertOne()
 	InitService()
 }

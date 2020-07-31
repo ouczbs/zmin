@@ -20,9 +20,7 @@ func (stack * UPacketPool) Pop() * UPacket{
 	return object.(*UPacket)
 }
 func (stack * UPacketPool) New() * UPacket{
-	packet := &UPacket{}
-	packet.Init()
-	return packet
+	return &UPacket{}
 }
 
 type UPacketBufferPool struct {
@@ -37,8 +35,7 @@ func (stack * UPacketBufferPool) Pop()[]byte{
 	return object.([]byte)
 }
 func (stack * UPacketBufferPool) New() []byte{
-	bytes := make([]byte , stack.bufferSize)
-	return bytes
+	return make([]byte , stack.bufferSize)
 }
 func NewPacketBufferPool(bufferSize TSize)*UPacketBufferPool{
 	stack := &UPacketBufferPool{

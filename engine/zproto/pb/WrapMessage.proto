@@ -4,9 +4,8 @@ option go_package = ".;pb";
 
 message WrapMessage
 {
-  int32 cmd   = 1; // 协议编号
-  bytes   content   = 2; // 协议二进制
-  int32  request   =3; //请求码
-  int32  response =4; //响应码
-  int32  code = 5; //返回码
+  bytes   content   = 1; // 协议二进制
+  int32  request   =2; //请求码
+  int32  response =3; //响应码
+  int32  code = 4; //返回码
 }

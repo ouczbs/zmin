@@ -14,6 +14,7 @@ const (
 	CMaxPacketBuffer = 1024 * 1024 * 16
 	CPacketHeadSize = 2
 	CPacketMessageTypeSize = 2
+	CPacketRequestTypeSize = 2
 )
 const (
 	MT_INVALID TMessageType = iota

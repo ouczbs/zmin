@@ -13,7 +13,7 @@ import (
 )
 
 func InitService(){
-	zcache.MongoClient.ClearTable(Service)
+	zcache.GetMongoClient().ClearTable(Service)
 	initCenterService()
 	initLoginService()
 	initGateService()
@@ -64,7 +64,7 @@ func initLoginService(){
 			Path:path,
 			Property: writeLoginProperty(&bytes , name , centerAddr),
 		}
-		zcache.MongoClient.UpdateOrInsert(service,bson.M{"id":service.Id})
+		zcache.GetMongoClient().UpdateOrInsert(service,bson.M{"id":service.Id})
 	}
 }
 func initCenterService(){
@@ -78,7 +78,7 @@ func initCenterService(){
 		Type: pb.COMPONENT_TYPE_CENTER,
 		Path:path,
 	}
-	zcache.MongoClient.UpdateOrInsert(service,bson.M{"id":service.Id})
+	zcache.GetMongoClient().UpdateOrInsert(service,bson.M{"id":service.Id})
 }
 func initGateService(){
 	centerAddr := zconf.CenterConfig.ListenAddr
@@ -94,7 +94,7 @@ func initGateService(){
 		Path:path,
 		Property: writeBaseProperty(&bytes , centerAddr),
 	}
-	zcache.MongoClient.UpdateOrInsert(service,bson.M{"id":service.Id})
+	zcache.GetMongoClient().UpdateOrInsert(service,bson.M{"id":service.Id})
 }
 func initDispatcherService(){
 	centerAddr := zconf.CenterConfig.ListenAddr
@@ -111,11 +111,11 @@ func initDispatcherService(){
 			Path:path,
 			Property: writeBaseProperty(&bytes , centerAddr),
 		}
-		zcache.MongoClient.UpdateOrInsert(service,bson.M{"id":service.Id})
+		zcache.GetMongoClient().UpdateOrInsert(service,bson.M{"id":service.Id})
 	}
 }
 func readLoginService(){
 	var results []UService
-	zcache.MongoClient.Find(Service,bson.M{"type":pb.COMPONENT_TYPE_LOGIN}, &results)
+	zcache.GetMongoClient().Find(Service,bson.M{"type":pb.COMPONENT_TYPE_LOGIN}, &results)
 	zlog.Debug(results)
 }

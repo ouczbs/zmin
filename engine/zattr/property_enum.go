@@ -7,6 +7,7 @@ const (
 	Invalid  TPropertyType = 0 + iota
 	Int32ComponentId
 	Int32ComponentType
+	Int32MessageType
 	StringListenAddr
 	// -- service property
 	BoolIsLoadedService

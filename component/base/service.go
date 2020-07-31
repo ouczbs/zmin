@@ -25,7 +25,7 @@ func NewService(reqHandleMaps map[TCmd]FRequestHandle) *UService {
 		UProperty:     zclass.NewProperty(),
 		ReqHandleMaps: reqHandleMaps,
 		MessageQueue:  make(chan *UMessage, zconf.CQueueMessageSize),
-		Config:        &zconf.UServiceConfig{},
+		Config:        &UServiceConfig{},
 	}
 }
 func (service *UService) ClientDisconnect(proxy *UClientProxy) {
@@ -60,18 +60,20 @@ func (service *UService) SyncProxyProperty(proxy *UClientProxy, request *UReques
 		proxy.SetProperty(property.Key, zattr.ReadProperty(property.Value))
 		zlog.Debug("SyncProxyProperty:attr k:", property.Key)
 	}
+	request.Release()
 }
 func (service *UService) InitDownHandles() {
 	service.SetProperty(zattr.StringCenterAddr, zconf.GetCenterConfig().ListenAddr)
 	service.ReqHandleMaps[TCmd(pb.CommandList_MT_SYNC_PROXY_PROPERTY)] = service.SyncProxyProperty
 }
-func (service *UService) MakeClientProxy(addr string) *znet.UClientProxy {
+func (service *UService) MakeClientProxy(addr string, componentType pb.COMPONENT_TYPE) *znet.UClientProxy {
 	conn, err := net.Dial("tcp", addr)
 	if err != nil {
 		zlog.Infof(" MakeClientProxy error , addr %s , err %s", addr, err)
 		return nil
 	}
 	proxy := znet.NewClientProxy(service, conn)
+	proxy.SetProperty(zattr.Int32ComponentType , int32(componentType))
 	go proxy.Serve()
 	return proxy
 }
@@ -81,7 +83,7 @@ func (service *UService) MakeCenterProxy() *znet.UClientProxy {
 		zlog.Error("ConnectToCenter :attr k:", zattr.StringListenAddr)
 		return nil
 	}
-	centerProxy := service.MakeClientProxy(addr)
+	centerProxy := service.MakeClientProxy(addr , pb.COMPONENT_TYPE_CENTER)
 	return centerProxy
 }
 func (service *UService) ParseCmd() bool {

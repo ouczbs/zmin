@@ -18,7 +18,7 @@ func (service UGateService) MessageLoop() {
 			packet := message.Packet
 			switch messageType {
 			case zconf.MT_FROM_CENTER, zconf.MT_BROADCAST:
-				zproto.PbMessageHandle(proxy, packet)
+				zproto.PbMessageHandle(proxy, packet,message.Cmd)
 			default:
 
 			}
@@ -40,13 +40,13 @@ func (service *UGateService) ConnectToCenter() {
 	if centerProxy == nil {
 		service.Close()
 	}
-	request := znet.NewRequest(TCmd(pb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_TO_CENTER)
 	message := &pb.ADD_ENGINE_COMPONENT{
 		ComponentId: service.Config.ComponentId,
 		Type:       pb.COMPONENT_TYPE_GATE,
 		ListenAddr: service.Config.ListenAddr,
 	}
-	zproto.SendPbMessage(centerProxy, message, request)
+	request := znet.NewRequest(TCmd(pb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_TO_CENTER,message)
+	zproto.SendPbMessage(centerProxy, request)
 	request.Release()
 }
 func (service *UGateService) AddEngineComponentAck(proxy *UClientProxy, request *URequest) {

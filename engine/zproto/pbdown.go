@@ -13,11 +13,10 @@ var (
 	CommandListName = pb.CommandList_name
 )
 
-func PbMessageHandle(proxy *UClientProxy , packet * UPacket){
+func PbMessageHandle(proxy *UClientProxy , packet * UPacket , cmd TCmd){
 	wrapBytes := packet.MessagePayload()
 	wrapMessage := &UWrapMessage{}
 	Unmarshal(wrapBytes , wrapMessage)
-	cmd := wrapMessage.Cmd
 	handle , globalHandle := proxy.GetRequestHandles(wrapMessage.Response , cmd)
 	if cmd == 0 || (handle == nil && globalHandle == nil){
 		return
@@ -29,11 +28,9 @@ func PbMessageHandle(proxy *UClientProxy , packet * UPacket){
 
 func GetRequestMessage(wrap *UWrapMessage, message IReflectMessage) *URequest {
 	Unmarshal(wrap.Content, message)
-	request := znet.NewRequest(_CMD_INVALID, _MT_INVALID)
-	request.ProtoMessage = message
+	request := znet.NewRequest(_CMD_INVALID, _MT_INVALID, message)
 	request.Code = wrap.Code
 	request.Next = true
-	request.Request = wrap.Request
 	return request
 }
 func newPbMessage(cmd TCmd) (IReflectMessage , error){

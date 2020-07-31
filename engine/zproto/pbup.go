@@ -6,10 +6,11 @@ import (
 	"github.com/ouczbs/Zmin/engine/zutil"
 )
 
-func sendPbMessage(proxy *UClientProxy , message IReflectMessage, wrap *UWrapMessage , messageType TMessageType)error{
+func sendPbMessage(proxy *UClientProxy , request * URequest, wrap *UWrapMessage)error{
 	packet := znet.NewPacket()
-	packet.WriteMessageType(messageType)
-	out , err := Marshal(message)
+	packet.WriteMessageType(request.MessageType)
+	packet.WriteMessageCmd(request.Cmd)
+	out , err := Marshal(request.ProtoMessage)
 	if err != nil{
 		return err
 	}
@@ -23,38 +24,34 @@ func sendPbMessage(proxy *UClientProxy , message IReflectMessage, wrap *UWrapMes
 	packet.Release()
 	return err
 }
-func SendPbMessage(proxy *UClientProxy , message IReflectMessage, request * URequest)error{
-	wrap := &UWrapMessage{
-		Cmd: request.Cmd,
-	}
-	return sendPbMessage(proxy , message , wrap, request.MessageType)
+func SendPbMessage(proxy *UClientProxy , request * URequest)error{
+	wrap := &UWrapMessage{}
+	return sendPbMessage(proxy , request , wrap)
 }
-func RequestMessage(proxy *UClientProxy , message IReflectMessage, request * URequest , handle FRequestHandle)error{
+func RequestMessage(proxy *UClientProxy , request * URequest , handle FRequestHandle)error{
 	sequence := zutil.IncSequence()
 	wrap := &UWrapMessage{
-		Cmd: request.Cmd,
 		Request: sequence,
 		Code:request.Code,
 	}
 	proxy.ReqHandleMaps[sequence] = handle
-	return sendPbMessage(proxy , message , wrap, request.MessageType)
+	return sendPbMessage(proxy , request , wrap)
 }
-func ResponseMessage(proxy *UClientProxy , message IReflectMessage,request * URequest)error{
+func ResponseMessage(proxy *UClientProxy ,request * URequest)error{
 	wrap := &UWrapMessage{
-		Cmd: request.Cmd,
 		Response: request.Request,
 		Code:request.Code,
 	}
-	return sendPbMessage(proxy ,message , wrap , request.MessageType)
+	return sendPbMessage(proxy , request , wrap)
 }
-func MakePbMessagePacket(message IReflectMessage , request * URequest)* UPacket{
+func MakePbMessagePacket(request * URequest)* UPacket{
 	packet := znet.NewPacket()
 	wrap := &UWrapMessage{
-		Cmd: request.Cmd,
 		Code:request.Code,
 	}
 	packet.WriteMessageType(request.MessageType)
-	out , err := Marshal(message)
+	packet.WriteMessageCmd(request.Cmd)
+	out , err := Marshal(request.ProtoMessage)
 	if err != nil{
 		zlog.Error(" MakePbMessagePacket Marshal message error " ,err)
 		return nil

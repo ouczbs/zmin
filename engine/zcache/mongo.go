@@ -7,47 +7,61 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-var MongoClient *UMongoClient
+var mongoClient *UMongoClient
+var (
+	listenAddr = "127.0.0.1"
+	dbName = "zinx"
+	isCreated= false
+)
 type UMongoClient struct {
 	*mongo.Database
 }
-func init()  {
-	MongoClient = NewMongoClient("mongodb://111.229.54.9:27017" , "mmo")
+
+func InitMongoClient(addr string, db string) {
+	listenAddr = addr 
+	dbName = db
 }
-func NewMongoClient(listenAddr string, dbname string)* UMongoClient{
-	client, err := mongo.Connect(ctx , options.Client().ApplyURI(listenAddr))
+func GetMongoClient() *UMongoClient{
+	if !isCreated{
+		isCreated = true
+		mongoClient = NewMongoClient(listenAddr, dbName)
+	}
+	return mongoClient
+}
+func NewMongoClient(listenAddr string, dbname string) *UMongoClient {
+	client, err := mongo.Connect(ctx, options.Client().ApplyURI(listenAddr))
 	if err != nil {
 		return nil
 	}
 	return &UMongoClient{
-		Database:client.Database(dbname),
+		Database: client.Database(dbname),
 	}
 }
-func (mongo UMongoClient)UpdateOrInsert(model IModel , query interface{})error{
+func (mongo UMongoClient) UpdateOrInsert(model IModel, query interface{}) error {
 	var upsert = true
-	_ , err := mongo.Collection(model.Table()).UpdateOne(ctx , query, bson.M{
-		"$set":model.M(),
-	} , &options.UpdateOptions{Upsert: &upsert})
+	_, err := mongo.Collection(model.Table()).UpdateOne(ctx, query, bson.M{
+		"$set": model.M(),
+	}, &options.UpdateOptions{Upsert: &upsert})
 	return err
 }
-func (mongo * UMongoClient)InsertOne(model IModel)error{
-	_ , err := mongo.Collection(model.Table()).InsertOne(ctx , model.M())
+func (mongo *UMongoClient) InsertOne(model IModel) error {
+	_, err := mongo.Collection(model.Table()).InsertOne(ctx, model.M())
 	return err
 }
-func (mongo * UMongoClient)ClearTable(model IModel)error{
-	opts := options.Delete().SetCollation(&options.Collation{     Locale:    "en_US",     Strength:  1,     CaseLevel: false})
-	res , err := mongo.Collection(model.Table()).DeleteMany(ctx , bson.D{},opts)
+func (mongo *UMongoClient) ClearTable(model IModel) error {
+	opts := options.Delete().SetCollation(&options.Collation{Locale: "en_US", Strength: 1, CaseLevel: false})
+	res, err := mongo.Collection(model.Table()).DeleteMany(ctx, bson.D{}, opts)
 	zlog.Debug(res.DeletedCount)
 	return err
 }
-func (mongo * UMongoClient)Find(model IModel , query interface{} ,results interface{})error{
-	res , err := mongo.Collection(model.Table()).Find(ctx , query)
-	if err != nil{
+func (mongo *UMongoClient) Find(model IModel, query interface{}, results interface{}) error {
+	res, err := mongo.Collection(model.Table()).Find(ctx, query)
+	if err != nil {
 		return err
 	}
-	return res.All(ctx , results)
+	return res.All(ctx, results)
 }
-func (mongo * UMongoClient)FindOne(model IModel , query interface{} ,result interface{})error{
-	err := mongo.Collection(model.Table()).FindOne(ctx , query).Decode(result)
+func (mongo *UMongoClient) FindOne(model IModel, query interface{}) error {
+	err := mongo.Collection(model.Table()).FindOne(ctx, query).Decode(model)
 	return err
 }

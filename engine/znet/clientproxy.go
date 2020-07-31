@@ -43,8 +43,7 @@ func (proxy *UClientProxy) Serve() {
 			zlog.Debugf("Serve RecvPacket error ",err  )
 			return
 		}
-		messageType := packet.ReadMessageType()
-		message := NewMessage(proxy, messageType , packet )
+		message := NewMessage(proxy , packet )
 		proxy.owner.RecvMessage(message)
 	}
 }

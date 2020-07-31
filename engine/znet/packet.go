@@ -25,6 +25,7 @@ type UPacket struct {
 func NewPacket() *UPacket {
 	var packet * UPacket
 	packet = packetPool.Pop()
+	packet.Init()
 	packet.IsReleased = false
 	return packet
 }
@@ -86,12 +87,19 @@ func (packet *UPacket) WriteSize(size TSize) {
 func (packet *UPacket) ReadMessageType() TMessageType {
 	return packetEndian.Uint16(packet.bytes[_CPacketHeadSize:_CPacketMessageHeadSize])
 }
+func (packet *UPacket) ReadMessageCmd()TCallId {
+	return TCallId(packetEndian.Uint16(packet.bytes[_CPacketMessageTypeSize:_CPacketMessageHeadSize]))
+}
 func (packet *UPacket) MessagePayload() []byte {
 	return packet.bytes[_CPacketMessageHeadSize:]
 }
+func (packet *UPacket) WriteMessageCmd(request TCallId)  {
+	packetEndian.PutUint16(packet.bytes[_CPacketMessageTypeSize:_CPacketMessageHeadSize] , uint16(request))
+	packet.Size = _CPacketMessageHeadSize
+}
 func (packet *UPacket) WriteMessageType(messageType TMessageType) {
 	packetEndian.PutUint16(packet.bytes[_CPacketHeadSize:_CPacketMessageHeadSize] , messageType)
-	packet.Size = _CPacketMessageHeadSize
+	packet.Size = _CPacketMessageTypeSize
 }
 func (packet *UPacket) AppendBytes(buf []byte) {
 	size := packet.Size
@@ -99,4 +107,13 @@ func (packet *UPacket) AppendBytes(buf []byte) {
 	packet.SetSize(bufSize + size)
 	copy(packet.bytes[size:size+bufSize], buf)
 }
-
+func (packet *UPacket) AppendComponentId(id TComponentId) {
+	size := packet.Size
+	packet.SetSize(4 + size)
+	packetEndian.PutUint32(packet.bytes[size:size + 4] , uint32(id))
+}
+func (packet *UPacket) SubtractComponentId()TComponentId{
+	size := packet.Size - 4
+	packet.Size = size
+	return TComponentId(packetEndian.Uint32(packet.bytes[size : size+4]))
+}

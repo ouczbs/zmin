@@ -9,20 +9,19 @@ var (
 type UMessage struct{
 	Proxy 		 * UClientProxy
 	MessageType  TMessageType
+	Cmd 	 	 	TCmd
 	Packet      * UPacket
 
 	isReleased bool
 }
-func NewMessage(proxy * UClientProxy ,messageType TMessageType ,packet * UPacket )*UMessage{
+func NewMessage(proxy * UClientProxy ,packet * UPacket )*UMessage{
 	message := messagePool.Pop()
 	message.Proxy = proxy
-	message.MessageType = messageType
+	message.MessageType = packet.ReadMessageType()
+	message.Cmd = packet.ReadMessageCmd()
 	message.Packet = packet
 	message.isReleased = false
 	return message
-}
-func (message * UMessage) Init() {
-
 }
 func (message * UMessage) Release() {
 	if message.isReleased {

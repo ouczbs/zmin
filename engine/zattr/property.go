@@ -22,8 +22,8 @@ func SetRemoteProperty(proxy * UClientProxy , key TEnum, value interface{})  {
 	}
 	sync := &pb.SET_REMOTE_PROPERTY{}
 	sync.PropertyMapList = append(sync.PropertyMapList, &pb.PropertyMap{Key: key,Value: property})
-	request := znet.NewRequest(_MT_SET_REMOTE_PROPERTY , _MT_SYNC_PROPERTY)
-	zproto.SendPbMessage(proxy , sync , request)
+	request := znet.NewRequest(_MT_SET_REMOTE_PROPERTY , _MT_SYNC_PROPERTY,sync)
+	zproto.SendPbMessage(proxy  , request)
 }
 //设置链接属性
 func SyncProxyProperty(proxy * UClientProxy , key TEnum, value interface{}) {
@@ -34,8 +34,8 @@ func SyncProxyProperty(proxy * UClientProxy , key TEnum, value interface{}) {
 	proxy.SetProperty(key , ReadProperty(property))
 	sync := &pb.SYNC_PROXY_PROPERTY{}
 	sync.PropertyMapList = append(sync.PropertyMapList, &pb.PropertyMap{Key: key,Value: property})
-	request := znet.NewRequest(_MT_SYNC_PROXY_PROPERTY , _MT_SYNC_PROPERTY)
-	zproto.SendPbMessage(proxy , sync , request)
+	request := znet.NewRequest(_MT_SYNC_PROXY_PROPERTY , _MT_SYNC_PROPERTY , sync)
+	zproto.SendPbMessage(proxy , request)
 }
 func SyncProxyPropertyMaps(proxy * UClientProxy) {
 	sync := &pb.SYNC_PROXY_PROPERTY{}
@@ -47,8 +47,8 @@ func SyncProxyPropertyMaps(proxy * UClientProxy) {
 		proxy.SetProperty(key , ReadProperty(property))
 		sync.PropertyMapList = append(sync.PropertyMapList, &pb.PropertyMap{Key: key,Value: property})
 	}
-	request := znet.NewRequest(_MT_SYNC_PROXY_PROPERTY , _MT_SYNC_PROPERTY)
-	zproto.SendPbMessage(proxy , sync , request)
+	request := znet.NewRequest(_MT_SYNC_PROXY_PROPERTY , _MT_SYNC_PROPERTY , sync)
+	zproto.SendPbMessage(proxy , request)
 }
 func ReadProperty(p * pb.Property) interface{}{
 	switch p.Type {

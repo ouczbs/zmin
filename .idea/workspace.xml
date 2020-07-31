@@ -235,9 +235,45 @@
       <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/google.golang.org/protobuf@v1.25.0/go.mod" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/gopkg.in/yaml.v2@v2.2.7/go.mod" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../GoModules/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/Account.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/attr/property.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/attr/property_enum.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/conf/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/conf/const.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/conf/type.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/account.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mmo/engine/model/account_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/building.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/cloth.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/equip.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/face.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/furniture.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/monest.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/npc.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/role.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/role_cloth.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/role_equip.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/role_face.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/role_game.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/role_info.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/schema.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/model/type.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/proto/pb/Cmd.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/proto/pb/Cmd.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/proto/pb/Login.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/proto/pb/Login.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/proto/pbdown.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/proto/pbup.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/engine/proto/type.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/game/base/service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/game/login/loginservice.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/game/login/loginservice_game.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/game/login/loginservice_handle.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/game/login/type.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/game/login/user/player.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/game/login/user/player_pool.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/game/login/user/type.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mmo/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmo/run/login/runlogin.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tree/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../.vs/Survive/v15/.suo" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../.vs/Survive/v15/Browse.VC.db" beforeDir="false" />
@@ -1123,10 +1159,41 @@
       <change beforePath="$PROJECT_DIR$/../../ThirdParty/Asio/include/asio/yield.hpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../desktop.ini" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zmin.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Zmin.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/center.log" beforeDir="false" afterPath="$PROJECT_DIR$/center.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/base/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/base/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/center/centerservice_handle.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/center/centerservice_handle.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/dispatcher/dispatcherservice_handle.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/dispatcher/dispatcherservice_handle.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/gate/gateservice_handle.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/gate/gateservice_handle.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/login/loginservice.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/login/loginservice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/login/loginservice_handle.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/login/loginservice_handle.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/login/type.go" beforeDir="false" afterPath="$PROJECT_DIR$/component/login/type.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dispatcher.log" beforeDir="false" afterPath="$PROJECT_DIR$/dispatcher.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zattr/property.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zattr/property.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zattr/property_enum.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zattr/property_enum.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zcache/mongo.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zcache/mongo.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zconf/const.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zconf/const.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zmodel/service_init.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zmodel/service_init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zmodel/service_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zmodel/service_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/znet/clientproxy.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/znet/clientproxy.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/znet/message.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/znet/message.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/znet/message_pool.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/znet/message_pool.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/znet/packet.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/znet/packet.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/znet/packet_pool.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/znet/packet_pool.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/znet/request.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/znet/request.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/znet/request_pool.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/znet/request_pool.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/znet/type.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/znet/type.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zproto/pb/WrapMessage.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zproto/pb/WrapMessage.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zproto/pb/WrapMessage.proto" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zproto/pb/WrapMessage.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zproto/pbdown.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zproto/pbdown.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zproto/pbup.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zproto/pbup.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine/zproto/type.go" beforeDir="false" afterPath="$PROJECT_DIR$/engine/zproto/type.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gate.log" beforeDir="false" afterPath="$PROJECT_DIR$/gate.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/login.log" beforeDir="false" afterPath="$PROJECT_DIR$/login.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebook/.ipynb_checkpoints/pb-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebook/.ipynb_checkpoints/pb-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebook/pb.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebook/pb.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1304,22 +1371,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596087083136" />
-    <state width="1860" height="246" key="GridCell.Tab.0.bottom" timestamp="1596097335296">
+    <state width="1860" height="432" key="GridCell.Tab.0.bottom" timestamp="1596169353687">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="246" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596097335296" />
-    <state width="1860" height="246" key="GridCell.Tab.0.center" timestamp="1596097335296">
+    <state width="1860" height="432" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596169353687" />
+    <state width="1860" height="432" key="GridCell.Tab.0.center" timestamp="1596169353687">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="246" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596097335296" />
-    <state width="1860" height="246" key="GridCell.Tab.0.left" timestamp="1596097335296">
+    <state width="1860" height="432" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596169353687" />
+    <state width="1860" height="432" key="GridCell.Tab.0.left" timestamp="1596169353687">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="246" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596097335296" />
-    <state width="1860" height="246" key="GridCell.Tab.0.right" timestamp="1596097335296">
+    <state width="1860" height="432" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596169353687" />
+    <state width="1860" height="432" key="GridCell.Tab.0.right" timestamp="1596169353687">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="246" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596097335296" />
+    <state width="1860" height="432" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596169353687" />
     <state width="1877" height="220" key="GridCell.Tab.1.bottom" timestamp="1596092155063">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
