@@ -6,10 +6,10 @@ import (
 	"github.com/ouczbs/Zmin/engine/zlog"
 	"github.com/ouczbs/Zmin/engine/znet"
 	"github.com/ouczbs/Zmin/engine/zproto"
-	"github.com/ouczbs/Zmin/engine/zproto/pb"
+	"github.com/ouczbs/Zmin/engine/zproto/zpb"
 )
 
-func (service UCenterService) MessageLoop() {
+func (service *UCenterService) MessageLoop() {
 	for {
 		select {
 		case message := <-service.MessageQueue:
@@ -17,8 +17,8 @@ func (service UCenterService) MessageLoop() {
 			messageType := message.MessageType
 			packet := message.Packet
 			switch messageType {
-			case zconf.MT_TO_CENTER:
-				zproto.PbMessageHandle(proxy, packet ,message.Cmd)
+			case zconf.MT_TO_SERVER, zconf.MT_TO_ALL:
+				zproto.PbMessageHandle(proxy, packet, message.Cmd)
 			default:
 
 			}
@@ -30,8 +30,8 @@ func (service UCenterService) MessageLoop() {
 		}
 	}
 }
-func (service *UCenterService) UtilBroadcastAddEngineComponent(message *pb.ADD_ENGINE_COMPONENT, componentMaps TProxyMap) {
-	request := znet.NewRequest(TCmd(pb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_BROADCAST , message)
+func (service *UCenterService) UtilBroadcastAddEngineComponent(message *zpb.ADD_ENGINE_COMPONENT, componentMaps TProxyMap) {
+	request := znet.NewRequest(TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_BROADCAST, message)
 	packet := zproto.MakePbMessagePacket(request)
 	for _, comp := range componentMaps {
 		comp.SendPacket(packet)
@@ -40,22 +40,22 @@ func (service *UCenterService) UtilBroadcastAddEngineComponent(message *pb.ADD_E
 }
 
 func (service *UCenterService) UtilAddEngineComponentAck(proxy *UClientProxy, componentMaps TProxyMap) {
-	message := &pb.ADD_ENGINE_COMPONENT_ACK{}
+	message := &zpb.ADD_ENGINE_COMPONENT_ACK{}
 	message.ComponentId = service.Config.ComponentId
 	if componentMaps != nil {
 		for _, comp := range componentMaps {
 			addr := comp.GetProperty(zattr.StringListenAddr).(string)
 			id := comp.GetProperty(zattr.Int32ComponentId).(int32)
-			component := &pb.ADD_ENGINE_COMPONENT{ListenAddr: addr, ComponentId: id}
+			component := &zpb.ADD_ENGINE_COMPONENT{ListenAddr: addr, ComponentId: id}
 			message.ComponentList = append(message.ComponentList, component)
 		}
 	}
-	request := znet.NewRequest(TCmd(pb.CommandList_MT_ADD_ENGINE_COMPONENT_ACK), zconf.MT_FROM_CENTER,message)
+	request := znet.NewRequest(TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT_ACK), zconf.MT_TO_SERVER, message)
 	zproto.ResponseMessage(proxy, request)
 	request.Release()
 }
 func (service *UCenterService) AddEngineComponent(proxy *UClientProxy, request *URequest) {
-	message, ok := request.ProtoMessage.(*pb.ADD_ENGINE_COMPONENT)
+	message, ok := request.ProtoMessage.(*zpb.ADD_ENGINE_COMPONENT)
 	if !ok {
 		zlog.Error("AddEngineComponent recv error request : ", proxy, request)
 		return
@@ -65,26 +65,27 @@ func (service *UCenterService) AddEngineComponent(proxy *UClientProxy, request *
 	proxy.SetProperty(zattr.Int32ComponentType, int32(message.Type))
 	proxy.SetProperty(zattr.StringListenAddr, string(message.ListenAddr))
 	switch message.Type {
-	case pb.COMPONENT_TYPE_GAME:
+	case zpb.COMPONENT_TYPE_GAME:
 		gameProxyMaps[sequence] = proxy
 		service.UtilAddEngineComponentAck(proxy, dispatcherProxyMaps)
 		service.UtilBroadcastAddEngineComponent(message, loginProxyMaps)
-	case pb.COMPONENT_TYPE_LOGIN:
+		service.UtilBroadcastAddEngineComponent(message, gateProxyMaps)
+	case zpb.COMPONENT_TYPE_LOGIN:
 		loginProxyMaps[sequence] = proxy
 		service.UtilAddEngineComponentAck(proxy, gameProxyMaps)
 		service.UtilBroadcastAddEngineComponent(message, gateProxyMaps)
-	case pb.COMPONENT_TYPE_DISPATCHER:
+	case zpb.COMPONENT_TYPE_DISPATCHER:
 		dispatcherProxyMaps[sequence] = proxy
 		service.UtilAddEngineComponentAck(proxy, nil)
 		service.UtilBroadcastAddEngineComponent(message, gameProxyMaps)
-	case pb.COMPONENT_TYPE_GATE:
+	case zpb.COMPONENT_TYPE_GATE:
 		gateProxyMaps[sequence] = proxy
-		service.UtilAddEngineComponentAck(proxy, loginProxyMaps)
+		service.UtilAddEngineComponentAck(proxy, gameProxyMaps)
 	}
 	request.Release()
 	zlog.Debug("AddEngineComponent:", sequence, message.Type)
 }
 func (service *UCenterService) InitDownHandles() {
 	service.UService.InitDownHandles()
-	reqHandleMaps[TCmd(pb.CommandList_MT_ADD_ENGINE_COMPONENT)] = service.AddEngineComponent
+	reqHandleMaps[TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT)] = service.AddEngineComponent
 }

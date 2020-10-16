@@ -10,7 +10,7 @@ import (
 	"github.com/ouczbs/Zmin/engine/zcache"
 	"github.com/ouczbs/Zmin/engine/zlog"
 	"github.com/ouczbs/Zmin/engine/zmodel"
-	"github.com/ouczbs/Zmin/engine/zproto/pb"
+	"github.com/ouczbs/Zmin/engine/zproto/zpb"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
@@ -22,7 +22,7 @@ func main() {
 	zcache.InitMongoClient("mongodb://111.229.54.9:27017", "mmo")
 	zmodel.InitService()
 	runCenter()
-	runGate()
+	//runGate()
 	runLogin()
 	runDispatcher()
 	for {
@@ -31,7 +31,7 @@ func main() {
 }
 func runCenter() {
 	var service UService
-	err := zcache.GetMongoClient().FindOne(&service, bson.M{"type": pb.COMPONENT_TYPE_CENTER})
+	err := zcache.GetMongoClient().FindOne(&service, bson.M{"type": zpb.COMPONENT_TYPE_CENTER})
 	if err != nil {
 		zlog.Debug(err)
 		return
@@ -42,7 +42,7 @@ func runCenter() {
 }
 func runGate() {
 	var service UService
-	err := zcache.GetMongoClient().FindOne(&service, bson.M{"type": pb.COMPONENT_TYPE_GATE})
+	err := zcache.GetMongoClient().FindOne(&service, bson.M{"type": zpb.COMPONENT_TYPE_GATE})
 	if err != nil {
 		zlog.Debug(err)
 		return
@@ -51,7 +51,7 @@ func runGate() {
 }
 func runLogin() {
 	var serviceList []UService
-	err := zcache.GetMongoClient().Find(Service, bson.M{"type": pb.COMPONENT_TYPE_LOGIN}, &serviceList)
+	err := zcache.GetMongoClient().Find(Service, bson.M{"type": zpb.COMPONENT_TYPE_LOGIN}, &serviceList)
 	if err != nil {
 		zlog.Debug(err)
 		return
@@ -62,7 +62,7 @@ func runLogin() {
 }
 func runDispatcher() {
 	var serviceList []UService
-	err := zcache.GetMongoClient().Find(Service, bson.M{"type": pb.COMPONENT_TYPE_DISPATCHER}, &serviceList)
+	err := zcache.GetMongoClient().Find(Service, bson.M{"type": zpb.COMPONENT_TYPE_DISPATCHER}, &serviceList)
 	if err != nil {
 		zlog.Debug(err)
 		return

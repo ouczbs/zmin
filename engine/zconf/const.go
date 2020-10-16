@@ -18,17 +18,17 @@ const (
 )
 const (
 	MT_INVALID TMessageType = iota
-	MT_SYNC_PROPERTY
-	MT_BROADCAST
+
+	MT_TO_ALL
+	MT_TO_SERVER
 	MT_TO_CLIENT
-	MT_TO_GATE
-	MT_TO_CENTER
-	MT_FROM_CENTER
-	MT_TO_LOGIN
-	MT_TO_GAME_START = 100 + iota
+	MT_BROADCAST
 
-	MT_TO_GAME_END = 1000 + iota
 
-	CodeOk = iota
+	MT_TO_GAME_START = 1000
+
+	MT_TO_GAME_END = 10000
+
+	CodeOk = 0
 	CodeError
 )

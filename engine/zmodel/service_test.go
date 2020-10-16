@@ -5,7 +5,7 @@ import (
 	"github.com/ouczbs/Zmin/engine/zcache"
 	"github.com/ouczbs/Zmin/engine/zconf"
 	"github.com/ouczbs/Zmin/engine/zlog"
-	"github.com/ouczbs/Zmin/engine/zproto/pb"
+	"github.com/ouczbs/Zmin/engine/zproto/zpb"
 	"go.mongodb.org/mongo-driver/bson"
 	"os"
 	"strconv"

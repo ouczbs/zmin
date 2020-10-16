@@ -3,7 +3,7 @@ package zproto
 import (
 	"github.com/ouczbs/Zmin/engine/zconf"
 	"github.com/ouczbs/Zmin/engine/znet"
-	"github.com/ouczbs/Zmin/engine/zproto/pb"
+	"github.com/ouczbs/Zmin/engine/zproto/zpb"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 )
@@ -23,7 +23,7 @@ type (
 	URequest = znet.URequest
 	UClientProxy = znet.UClientProxy
 
-	UWrapMessage = pb.WrapMessage
+	UWrapMessage = zpb.WrapMessage
 
 	FRequestHandle = znet.FRequestHandle
 )

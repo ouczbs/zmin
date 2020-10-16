@@ -91,7 +91,7 @@ func (packet *UPacket) ReadMessageCmd()TCallId {
 	return TCallId(packetEndian.Uint16(packet.bytes[_CPacketMessageTypeSize:_CPacketMessageHeadSize]))
 }
 func (packet *UPacket) MessagePayload() []byte {
-	return packet.bytes[_CPacketMessageHeadSize:]
+	return packet.bytes[_CPacketMessageHeadSize:packet.Size]
 }
 func (packet *UPacket) WriteMessageCmd(request TCallId)  {
 	packetEndian.PutUint16(packet.bytes[_CPacketMessageTypeSize:_CPacketMessageHeadSize] , uint16(request))
@@ -109,11 +109,11 @@ func (packet *UPacket) AppendBytes(buf []byte) {
 }
 func (packet *UPacket) AppendComponentId(id TComponentId) {
 	size := packet.Size
-	packet.SetSize(4 + size)
-	packetEndian.PutUint32(packet.bytes[size:size + 4] , uint32(id))
+	packet.SetSize(2 + size)
+	packetEndian.PutUint16(packet.bytes[size:size + 2] , uint16(id))
 }
 func (packet *UPacket) SubtractComponentId()TComponentId{
-	size := packet.Size - 4
+	size := packet.Size - 2
 	packet.Size = size
-	return TComponentId(packetEndian.Uint32(packet.bytes[size : size+4]))
+	return TComponentId(packetEndian.Uint16(packet.bytes[size : size+2]))
 }

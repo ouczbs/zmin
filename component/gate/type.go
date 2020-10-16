@@ -12,7 +12,7 @@ type (
 	URequest = znet.URequest
 	UService = base.UService
 	FRequestHandle = znet.FRequestHandle
-
+	UPacket = znet.UPacket
 	TCmd = zconf.TCmd
 	TMessageType = zconf.TMessageType
 	TComponentId =zconf.TComponentId
@@ -21,7 +21,8 @@ type (
 var (
 	reqHandleMaps  = make(map[TCmd]FRequestHandle)
 
-	loginProxyMap = make(map[TComponentId]string)
-
 	centerProxy * UClientProxy
+
+	clientProxyMaps = make(map[TComponentId]*UClientProxy)
+	gameMessageMaps = make(map[TMessageType]*UClientProxy)
 )

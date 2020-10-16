@@ -6,7 +6,7 @@ import (
 	"github.com/ouczbs/Zmin/engine/zconf"
 	"github.com/ouczbs/Zmin/engine/zlog"
 	"github.com/ouczbs/Zmin/engine/znet"
-	"github.com/ouczbs/Zmin/engine/zproto/pb"
+	"github.com/ouczbs/Zmin/engine/zproto/zpb"
 	"flag"
 	"net"
 	"os"
@@ -32,7 +32,7 @@ func (service *UService) ClientDisconnect(proxy *UClientProxy) {
 	zlog.Debugf("ClientDisconnect %s", proxy)
 	t, ok := proxy.GetProperty(zattr.Int32ComponentType).(int32)
 	zlog.Infof(" ClientDisconnect   " , t)
-	if ok && t == int32(pb.COMPONENT_TYPE_CENTER) {
+	if ok && t == int32(zpb.COMPONENT_TYPE_CENTER) {
 		zlog.Infof(" Center client notify exit process !!!")
 		service.Close()
 	}
@@ -51,7 +51,7 @@ func (service *UService) GetRequestHandle(cmd TCmd) FRequestHandle {
 	return service.ReqHandleMaps[cmd]
 }
 func (service *UService) SyncProxyProperty(proxy *UClientProxy, request *URequest) {
-	message, ok := request.ProtoMessage.(*pb.SYNC_PROXY_PROPERTY)
+	message, ok := request.ProtoMessage.(*zpb.SYNC_PROXY_PROPERTY)
 	if !ok {
 		zlog.Error("AddEngineComponent recv error request : ", proxy, request)
 		return
@@ -64,9 +64,9 @@ func (service *UService) SyncProxyProperty(proxy *UClientProxy, request *UReques
 }
 func (service *UService) InitDownHandles() {
 	service.SetProperty(zattr.StringCenterAddr, zconf.GetCenterConfig().ListenAddr)
-	service.ReqHandleMaps[TCmd(pb.CommandList_MT_SYNC_PROXY_PROPERTY)] = service.SyncProxyProperty
+	service.ReqHandleMaps[TCmd(zpb.CommandList_MT_SYNC_PROXY_PROPERTY)] = service.SyncProxyProperty
 }
-func (service *UService) MakeClientProxy(addr string, componentType pb.COMPONENT_TYPE) *znet.UClientProxy {
+func (service *UService) MakeClientProxy(addr string, componentType zpb.COMPONENT_TYPE) *znet.UClientProxy {
 	conn, err := net.Dial("tcp", addr)
 	if err != nil {
 		zlog.Infof(" MakeClientProxy error , addr %s , err %s", addr, err)
@@ -83,7 +83,7 @@ func (service *UService) MakeCenterProxy() *znet.UClientProxy {
 		zlog.Error("ConnectToCenter :attr k:", zattr.StringListenAddr)
 		return nil
 	}
-	centerProxy := service.MakeClientProxy(addr , pb.COMPONENT_TYPE_CENTER)
+	centerProxy := service.MakeClientProxy(addr , zpb.COMPONENT_TYPE_CENTER)
 	return centerProxy
 }
 func (service *UService) ParseCmd() bool {

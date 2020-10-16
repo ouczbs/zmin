@@ -3,12 +3,12 @@ package zmodel
 
 import (
 "github.com/ouczbs/Zmin/engine/zconf"
-"github.com/ouczbs/Zmin/engine/zproto/pb"
+"github.com/ouczbs/Zmin/engine/zproto/zpb"
 )
 
 type UService struct {
 	Id zconf.TComponentId
-	Type pb.COMPONENT_TYPE
+	Type zpb.COMPONENT_TYPE
 	ListenAddr string
 	Path string
 	Property string

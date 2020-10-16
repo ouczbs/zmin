@@ -1,6 +1,6 @@
 syntax = "proto3";
-package pb;
-option go_package = ".;pb";
+package zpb;
+option go_package = ".;zpb";
 enum COMPONENT_TYPE
 {
     CENTER = 0 ;

@@ -23,7 +23,7 @@ var (
 	reqHandleMaps  = make(map[TCmd]FRequestHandle)
 	centerProxy * UClientProxy
 
-	gameProxyMaps = make(map[TComponentId]*UClientProxy)
+	clientProxyMaps = make(map[TComponentId]*UClientProxy)
 	gameMessageMaps = make(map[TMessageType]*UClientProxy)
 
 )

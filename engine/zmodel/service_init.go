@@ -5,7 +5,7 @@ import (
 	"github.com/ouczbs/Zmin/engine/zcache"
 	"github.com/ouczbs/Zmin/engine/zconf"
 	"github.com/ouczbs/Zmin/engine/zlog"
-	"github.com/ouczbs/Zmin/engine/zproto/pb"
+	"github.com/ouczbs/Zmin/engine/zproto/zpb"
 	"go.mongodb.org/mongo-driver/bson"
 	"os"
 	"strconv"
@@ -30,12 +30,12 @@ func writeString(bytes *strings.Builder , s string){
 }
 func writeCenterAddrProperty(bytes *strings.Builder , listenAddr string){
 	writeString(bytes , strconv.Itoa(int(zattr.StringCenterAddr)))
-	writeString(bytes , strconv.Itoa(int(pb.Property_Type_String)))
+	writeString(bytes , strconv.Itoa(int(zpb.Property_Type_String)))
 	writeString(bytes , listenAddr)
 }
 func writeLoginProperty(bytes *strings.Builder , name string , centerAddr string)string{
 	writeString(bytes , strconv.Itoa(int(zattr.StringComponentName)))
-	writeString(bytes , strconv.Itoa(int(pb.Property_Type_String)))
+	writeString(bytes , strconv.Itoa(int(zpb.Property_Type_String)))
 	writeString(bytes , name)
 	writeCenterAddrProperty(bytes , centerAddr)
 	return bytes.String()
@@ -60,7 +60,7 @@ func initLoginService(){
 		service := &UService{
 			Id: Sequence(),
 			ListenAddr: listenAddr,
-			Type: pb.COMPONENT_TYPE_LOGIN,
+			Type: zpb.COMPONENT_TYPE_LOGIN,
 			Path:path,
 			Property: writeLoginProperty(&bytes , name , centerAddr),
 		}
@@ -75,7 +75,7 @@ func initCenterService(){
 	service := &UService{
 		Id: Sequence(),
 		ListenAddr: centerAddr,
-		Type: pb.COMPONENT_TYPE_CENTER,
+		Type: zpb.COMPONENT_TYPE_CENTER,
 		Path:path,
 	}
 	zcache.GetMongoClient().UpdateOrInsert(service,bson.M{"id":service.Id})
@@ -90,7 +90,7 @@ func initGateService(){
 	service := &UService{
 		Id: Sequence(),
 		ListenAddr: gateAddr,
-		Type: pb.COMPONENT_TYPE_GATE,
+		Type: zpb.COMPONENT_TYPE_GATE,
 		Path:path,
 		Property: writeBaseProperty(&bytes , centerAddr),
 	}
@@ -107,7 +107,7 @@ func initDispatcherService(){
 		service := &UService{
 			Id: Sequence(),
 			ListenAddr: listenAddr,
-			Type: pb.COMPONENT_TYPE_DISPATCHER,
+			Type: zpb.COMPONENT_TYPE_DISPATCHER,
 			Path:path,
 			Property: writeBaseProperty(&bytes , centerAddr),
 		}
@@ -116,6 +116,6 @@ func initDispatcherService(){
 }
 func readLoginService(){
 	var results []UService
-	zcache.GetMongoClient().Find(Service,bson.M{"type":pb.COMPONENT_TYPE_LOGIN}, &results)
+	zcache.GetMongoClient().Find(Service,bson.M{"type":zpb.COMPONENT_TYPE_LOGIN}, &results)
 	zlog.Debug(results)
 }

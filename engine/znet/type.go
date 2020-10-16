@@ -3,7 +3,7 @@ package znet
 import (
 	"github.com/ouczbs/Zmin/engine/zclass"
 	"github.com/ouczbs/Zmin/engine/zconf"
-	"github.com/ouczbs/Zmin/engine/zproto/pb"
+	"github.com/ouczbs/Zmin/engine/zproto/zpb"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"net"
 )
@@ -26,7 +26,7 @@ type (
 	UStackPool = zclass.UStackPool
 	UProperty = zclass.UProperty
 
-	UWrapMessage = pb.WrapMessage
+	UWrapMessage = zpb.WrapMessage
 )
 type IService interface {
 	NewTcpConnection(net.Conn)

@@ -36,6 +36,8 @@ func (service *ULoginService) initService() {
 }
 func (service *ULoginService) NewTcpConnection(conn net.Conn) {
 	proxy := znet.NewClientProxy(service, conn)
-	proxy.SetProperty(zattr.Int32ComponentId, int32(zutil.IncSequence()))
+	id := zutil.IncSequence()
+	clientProxyMaps[id] = proxy
+	proxy.SetProperty(zattr.Int32ComponentId, int32(id))
 	proxy.Serve()
 }

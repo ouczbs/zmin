@@ -1,12 +1,12 @@
 
 syntax = "proto3";
-package pb;
-option go_package = ".;pb";
+package zpb;
+option go_package = ".;zpb";
 enum CommandList
 {
     MT_INVALID = 0;
     MT_SERVER_TYPE_START = 1 ;
-    // MT_TO_CENTER
+    // MT_TO_SERVER
     // MT_ADD_COMPONENT
 	MT_ADD_ENGINE_COMPONENT = 2 ;
 
@@ -17,7 +17,7 @@ enum CommandList
     // MT_CLIENT_TO_GATE
     MT_GET_ALL_LOGIN_COMPONENT = 20 ;
 
-    // MT_SYNC_PROPERTY
+    // MT_TO_ALL
     MT_SYNC_PROXY_PROPERTY = 30;
     MT_SET_REMOTE_PROPERTY =31;
 }

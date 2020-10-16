@@ -43,7 +43,7 @@ func (pc *UPacketConnection) RecvPacket()(* UPacket , error){
 		return packet, err
 	}
 	size := packet.ReadSize()
-	packet.MakeSize(size)
+	packet.SetSize(size)
 	err = pc.read(packet.bytes , _CPacketHeadSize , size)
 	return packet , err
 }
