@@ -1,7 +1,7 @@
 package zcache
 
 import (
-	"github.com/ouczbs/Zmin/engine/zlog"
+	"github.com/ouczbs/zmin/engine/zlog"
 	"testing"
 )
 

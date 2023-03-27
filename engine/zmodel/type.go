@@ -1,7 +1,7 @@
 package zmodel
 
 import (
-	"github.com/ouczbs/Zmin/engine/zconf"
+	"github.com/ouczbs/zmin/engine/zconf"
 	"sync"
 	"unsafe"
 )

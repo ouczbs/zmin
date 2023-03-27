@@ -1,6 +1,6 @@
 package main
 
-import "github.com/ouczbs/Zmin/component/center"
+import "github.com/ouczbs/zmin/component/center"
 
 func main()  {
 	service := center.NewCenterService()

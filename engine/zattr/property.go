@@ -1,11 +1,11 @@
 package zattr
 
 import (
-	"github.com/ouczbs/Zmin/engine/zconf"
-	"github.com/ouczbs/Zmin/engine/zlog"
-	"github.com/ouczbs/Zmin/engine/znet"
-	"github.com/ouczbs/Zmin/engine/zproto"
-	"github.com/ouczbs/Zmin/engine/zproto/zpb"
+	"github.com/ouczbs/zmin/engine/zconf"
+	"github.com/ouczbs/zmin/engine/zlog"
+	"github.com/ouczbs/zmin/engine/znet"
+	"github.com/ouczbs/zmin/engine/zproto"
+	"github.com/ouczbs/zmin/engine/zproto/zpb"
 	"strconv"
 )
 

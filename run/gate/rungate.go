@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/ouczbs/Zmin/component/gate"
+	"github.com/ouczbs/zmin/component/gate"
 	"os"
 	"strconv"
 )

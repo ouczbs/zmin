@@ -1,8 +1,8 @@
 package attr
 
 import (
-	"github.com/ouczbs/Zmin/engine/zattr"
-	"github.com/ouczbs/Zmin/engine/zlog"
+	"github.com/ouczbs/zmin/engine/zattr"
+	"github.com/ouczbs/zmin/engine/zlog"
 	"encoding/json"
 	"sync"
 )

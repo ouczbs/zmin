@@ -1,8 +1,8 @@
 package zproto
 
 import (
-	"github.com/ouczbs/Zmin/engine/znet"
-	"github.com/ouczbs/Zmin/engine/zproto/zpb"
+	"github.com/ouczbs/zmin/engine/znet"
+	"github.com/ouczbs/zmin/engine/zproto/zpb"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/reflect/protoregistry"
 	"strings"

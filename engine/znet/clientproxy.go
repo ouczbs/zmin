@@ -1,8 +1,8 @@
 package znet
 
 import (
-	"github.com/ouczbs/Zmin/engine/zclass"
-	"github.com/ouczbs/Zmin/engine/zlog"
+	"github.com/ouczbs/zmin/engine/zclass"
+	"github.com/ouczbs/zmin/engine/zlog"
 	"net"
 )
 

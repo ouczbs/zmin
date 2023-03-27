@@ -1,6 +1,6 @@
 package attr
 
-import "github.com/ouczbs/Zmin/engine/zconf"
+import "github.com/ouczbs/zmin/engine/zconf"
 
 type (
 	TEnum = zconf.TEnum

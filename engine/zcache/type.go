@@ -1,6 +1,6 @@
 package zcache
 
-import "github.com/ouczbs/Zmin/engine/zconf"
+import "github.com/ouczbs/zmin/engine/zconf"
 
 const (
 	CUnderline = "_"

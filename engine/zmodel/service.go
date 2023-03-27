@@ -2,8 +2,8 @@
 package zmodel
 
 import (
-"github.com/ouczbs/Zmin/engine/zconf"
-"github.com/ouczbs/Zmin/engine/zproto/zpb"
+"github.com/ouczbs/zmin/engine/zconf"
+"github.com/ouczbs/zmin/engine/zproto/zpb"
 )
 
 type UService struct {

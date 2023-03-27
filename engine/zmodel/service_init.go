@@ -1,11 +1,11 @@
 package zmodel
 
 import (
-	"github.com/ouczbs/Zmin/engine/zattr"
-	"github.com/ouczbs/Zmin/engine/zcache"
-	"github.com/ouczbs/Zmin/engine/zconf"
-	"github.com/ouczbs/Zmin/engine/zlog"
-	"github.com/ouczbs/Zmin/engine/zproto/zpb"
+	"github.com/ouczbs/zmin/engine/zattr"
+	"github.com/ouczbs/zmin/engine/zcache"
+	"github.com/ouczbs/zmin/engine/zconf"
+	"github.com/ouczbs/zmin/engine/zlog"
+	"github.com/ouczbs/zmin/engine/zproto/zpb"
 	"go.mongodb.org/mongo-driver/bson"
 	"os"
 	"strconv"

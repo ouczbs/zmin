@@ -1,7 +1,7 @@
 package zcache
 
 import (
-	"github.com/ouczbs/Zmin/engine/zlog"
+	"github.com/ouczbs/zmin/engine/zlog"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -10,19 +10,20 @@ import (
 var mongoClient *UMongoClient
 var (
 	listenAddr = "127.0.0.1"
-	dbName = "zinx"
-	isCreated= false
+	dbName     = "zinx"
+	isCreated  = false
 )
+
 type UMongoClient struct {
 	*mongo.Database
 }
 
 func InitMongoClient(addr string, db string) {
-	listenAddr = addr 
+	listenAddr = addr
 	dbName = db
 }
-func GetMongoClient() *UMongoClient{
-	if !isCreated{
+func GetMongoClient() *UMongoClient {
+	if !isCreated {
 		isCreated = true
 		mongoClient = NewMongoClient(listenAddr, dbName)
 	}
@@ -31,6 +32,7 @@ func GetMongoClient() *UMongoClient{
 func NewMongoClient(listenAddr string, dbname string) *UMongoClient {
 	client, err := mongo.Connect(ctx, options.Client().ApplyURI(listenAddr))
 	if err != nil {
+		zlog.Error(err)
 		return nil
 	}
 	return &UMongoClient{
@@ -50,8 +52,7 @@ func (mongo *UMongoClient) InsertOne(model IModel) error {
 }
 func (mongo *UMongoClient) ClearTable(model IModel) error {
 	opts := options.Delete().SetCollation(&options.Collation{Locale: "en_US", Strength: 1, CaseLevel: false})
-	res, err := mongo.Collection(model.Table()).DeleteMany(ctx, bson.D{}, opts)
-	zlog.Debug(res.DeletedCount)
+	_, err := mongo.Collection(model.Table()).DeleteMany(ctx, bson.D{}, opts)
 	return err
 }
 func (mongo *UMongoClient) Find(model IModel, query interface{}, results interface{}) error {

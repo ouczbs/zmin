@@ -1,12 +1,12 @@
 package gate
 
 import (
-	"Zmin/engine/zutil"
-	"github.com/ouczbs/Zmin/component/base"
-	"github.com/ouczbs/Zmin/engine/zattr"
-	"github.com/ouczbs/Zmin/engine/zconf"
-	"github.com/ouczbs/Zmin/engine/zlog"
-	"github.com/ouczbs/Zmin/engine/znet"
+	"zmin/engine/zutil"
+	"github.com/ouczbs/zmin/component/base"
+	"github.com/ouczbs/zmin/engine/zattr"
+	"github.com/ouczbs/zmin/engine/zconf"
+	"github.com/ouczbs/zmin/engine/zlog"
+	"github.com/ouczbs/zmin/engine/znet"
 	"net"
 )
 

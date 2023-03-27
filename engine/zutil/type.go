@@ -1,6 +1,6 @@
 package zutil
 
-import "github.com/ouczbs/Zmin/engine/zconf"
+import "github.com/ouczbs/zmin/engine/zconf"
 
 type (
 	TSequence = zconf.TSequence

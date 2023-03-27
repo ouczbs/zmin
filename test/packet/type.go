@@ -1,5 +1,5 @@
 package packet
 
-import "github.com/ouczbs/Zmin/engine/zconf"
+import "github.com/ouczbs/zmin/engine/zconf"
 
 type TSize = zconf.TSize

@@ -1,6 +1,6 @@
 package packet
 
-import "github.com/ouczbs/Zmin/engine/zconf"
+import "github.com/ouczbs/zmin/engine/zconf"
 var (
 	packetPool = NewPacketPool(zconf.CQueuePacketSize)
 	packetStackPool = NewPacketStackPool(zconf.CQueuePacketSize)

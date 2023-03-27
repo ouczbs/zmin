@@ -1,9 +1,9 @@
 package znet
 
 import (
-	"github.com/ouczbs/Zmin/engine/zclass"
-	"github.com/ouczbs/Zmin/engine/zconf"
-	"github.com/ouczbs/Zmin/engine/zproto/zpb"
+	"github.com/ouczbs/zmin/engine/zclass"
+	"github.com/ouczbs/zmin/engine/zconf"
+	"github.com/ouczbs/zmin/engine/zproto/zpb"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"net"
 )

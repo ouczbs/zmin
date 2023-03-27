@@ -4,7 +4,7 @@ option go_package = ".;zpb";
 
 message WrapMessage
 {
-  bytes   content   = 1; // 协议二进制
+  bytes  content   = 1; // 协议二进制
   int32  request   =2; //请求码
   int32  response =3; //响应码
   int32  code = 4; //返回码
