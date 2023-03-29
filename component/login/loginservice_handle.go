@@ -1,29 +1,33 @@
 package login
 
 import (
-	"github.com/ouczbs/zmin/engine/zattr"
-	"github.com/ouczbs/zmin/engine/zconf"
-	"github.com/ouczbs/zmin/engine/zlog"
-	"github.com/ouczbs/zmin/engine/znet"
-	"github.com/ouczbs/zmin/engine/zproto"
-	"github.com/ouczbs/zmin/engine/zproto/zpb"
+	"github.com/ouczbs/zmin/engine/core/zlog"
+	"github.com/ouczbs/zmin/engine/data/zconf"
+	"github.com/ouczbs/zmin/engine/net/zmessage"
+	"github.com/ouczbs/zmin/engine/sync/zattr"
+	"github.com/ouczbs/zmin/engine/sync/zpb"
+	"github.com/ouczbs/zmin/engine/sync/zproto"
 )
 
 func (service *ULoginService) MessageLoop() {
 	for {
 		select {
 		case message := <-service.MessageQueue:
-			proxy := message.Proxy
+			proxy, ok := message.Proxy.(*UClientProxy)
+			if !ok {
+				zlog.Error("MessageLoop Recv Unknown Proxy", proxy)
+				break
+			}
 			messageType := message.MessageType
 			packet := message.Packet
 			switch messageType {
-			case zconf.MT_TO_SERVER, zconf.MT_BROADCAST,zconf.MT_TO_ALL:
-				zproto.PbMessageHandle(proxy, packet,message.Cmd)
+			case zconf.MT_TO_SERVER, zconf.MT_BROADCAST, zconf.MT_TO_ALL:
+				zproto.PbMessageHandle(proxy, packet, message.Cmd)
 			case zconf.MT_TO_CLIENT:
 				service.ForwardToClient(packet)
 			default:
 				if messageType > zconf.MT_TO_GAME_START && messageType < zconf.MT_TO_GAME_END {
-					service.ForwardToGame(proxy , messageType , packet)
+					service.ForwardToGame(proxy, messageType, packet)
 				}
 			}
 			//case <-service.ticker:
@@ -47,10 +51,10 @@ func (service *ULoginService) ConnectToCenter() {
 	}
 	message := &zpb.ADD_ENGINE_COMPONENT{
 		ComponentId: service.Config.ComponentId,
-		Type:       zpb.COMPONENT_TYPE_LOGIN,
-		ListenAddr: service.Config.ListenAddr,
+		Type:        zpb.COMPONENT_TYPE_LOGIN,
+		ListenAddr:  service.Config.ListenAddr,
 	}
-	request := znet.NewRequest(TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_TO_SERVER,message)
+	request := zmessage.NewRequest(TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_TO_SERVER, message)
 	zproto.SendPbMessage(centerProxy, request)
 	request.Release()
 }
@@ -63,7 +67,7 @@ func (service *ULoginService) AddEngineComponentAck(proxy *UClientProxy, request
 	proxy.SetProperty(zattr.Int32ComponentId, int32(message.ComponentId))
 	proxy.SetProperty(zattr.Int32ComponentType, int32(zpb.COMPONENT_TYPE_CENTER))
 	for _, login := range message.ComponentList {
-		service.MakeClientProxy(string(login.ListenAddr),zpb.COMPONENT_TYPE_GAME)
+		service.MakeClientProxy(string(login.ListenAddr), zpb.COMPONENT_TYPE_GAME)
 	}
 }
 func (service *ULoginService) AddEngineComponent(proxy *UClientProxy, request *URequest) {
@@ -72,11 +76,11 @@ func (service *ULoginService) AddEngineComponent(proxy *UClientProxy, request *U
 		zlog.Error("AddEngineComponent recv error request : ", proxy, request)
 		return
 	}
-	service.MakeClientProxy(string(message.ListenAddr),zpb.COMPONENT_TYPE_GAME)
-	zlog.Debug("AddEngineComponent " , message.Type , message.ListenAddr)
+	service.MakeClientProxy(string(message.ListenAddr), zpb.COMPONENT_TYPE_GAME)
+	zlog.Debug("AddEngineComponent ", message.Type, message.ListenAddr)
 }
-func (service *ULoginService) ForwardToGame(proxy * UClientProxy,messageType TMessageType , packet * UPacket) {
-	id ,ok := proxy.GetProperty(zattr.Int32ComponentId).(int32)
+func (service *ULoginService) ForwardToGame(proxy *UClientProxy, messageType TMessageType, packet *UPacket) {
+	id, ok := proxy.GetProperty(zattr.Int32ComponentId).(int32)
 	if !ok {
 		return
 	}
@@ -86,18 +90,18 @@ func (service *ULoginService) ForwardToGame(proxy * UClientProxy,messageType TMe
 		game.ForwardPacket(packet)
 	}
 }
-func (service *ULoginService) ForwardToClient(packet * UPacket) {
+func (service *ULoginService) ForwardToClient(packet *UPacket) {
 	id := packet.SubtractComponentId()
 	proxy := clientProxyMaps[id]
 	if proxy != nil {
 		proxy.ForwardPacket(packet)
 	}
 }
-func (service *ULoginService) SyncProxyProperty(proxy *UClientProxy, request * URequest) {
-	service.UService.SyncProxyProperty(proxy ,request)
-	componentType , ok := proxy.GetProperty(zattr.Int32ComponentType).(int32)
-	if ok && componentType == int32(zpb.COMPONENT_TYPE_GAME){
-		if messageType , ok := proxy.GetProperty(zattr.Int32MessageType).(int32); ok{
+func (service *ULoginService) SyncProxyProperty(proxy *UClientProxy, request *URequest) {
+	service.UService.SyncProxyProperty(proxy, request)
+	componentType, ok := proxy.GetProperty(zattr.Int32ComponentType).(int32)
+	if ok && componentType == int32(zpb.COMPONENT_TYPE_GAME) {
+		if messageType, ok := proxy.GetProperty(zattr.Int32MessageType).(int32); ok {
 			gameMessageMaps[TMessageType(messageType)] = proxy
 		}
 	}

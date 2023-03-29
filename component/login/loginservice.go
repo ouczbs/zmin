@@ -1,12 +1,11 @@
 package login
 
 import (
-	"zmin/engine/zutil"
 	"github.com/ouczbs/zmin/component/base"
-	"github.com/ouczbs/zmin/engine/zattr"
-	"github.com/ouczbs/zmin/engine/zconf"
-	"github.com/ouczbs/zmin/engine/zlog"
-	"github.com/ouczbs/zmin/engine/znet"
+	"github.com/ouczbs/zmin/engine/core/zlog"
+	"github.com/ouczbs/zmin/engine/core/zutil"
+	"github.com/ouczbs/zmin/engine/net/znet"
+	"github.com/ouczbs/zmin/engine/sync/zattr"
 	"net"
 )
 
@@ -29,7 +28,7 @@ func (service *ULoginService) Run() {
 func (service *ULoginService) initService() {
 	logFile, ok := service.GetProperty(zattr.StringLogFile).(string)
 	if !ok {
-		logFile = zconf.LoginConfig.LogFile
+		logFile = base.LoginConfig.LogFile
 	}
 	zlog.SetOutput([]string{"stderr", logFile})
 	service.InitDownHandles()

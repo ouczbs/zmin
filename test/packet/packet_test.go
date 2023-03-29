@@ -1,33 +1,34 @@
 package packet
 
 import (
-	"github.com/ouczbs/zmin/engine/zconf"
-	"github.com/ouczbs/zmin/engine/zlog"
+	"github.com/ouczbs/zmin/engine/core/zlog"
+	"github.com/ouczbs/zmin/engine/data/zconf"
 	"testing"
 	"time"
 )
 
-var packetList = make(chan *UPacket , zconf.CPoolPacketSize * 2)
+var packetList = make(chan *UPacket, zconf.CPoolPacketSize*2)
+
 func runNewPacket() {
 	for true {
 		packet := NewPacket()
 		packetList <- packet
 	}
 }
-func runRelease(){
+func runRelease() {
 	for true {
-		packet := <- packetList
+		packet := <-packetList
 		packet.Release()
 	}
 }
-func runPacketPool()  {
-	for j := 0; j < 300 ; j++ {
+func runPacketPool() {
+	for j := 0; j < 300; j++ {
 		go runNewPacket()
 		go runNewPacket()
 		go runRelease()
 	}
 	time.Sleep(time.Duration(1) * time.Second / 3)
-	zlog.Debugf("push count  = %d , pop count = %d" , pushCount , popCount)
+	zlog.Debugf("push count  = %d , pop count = %d", pushCount, popCount)
 }
 func TestNewPacketPool(t *testing.T) {
 	stackPoolType = 1
@@ -37,8 +38,8 @@ func TestNewPacketStackPoolPool(t *testing.T) {
 	stackPoolType = 2
 	runPacketPool()
 }
-func getBytes()[]byte{
-	bytes := make([]byte , 128)
+func getBytes() []byte {
+	bytes := make([]byte, 128)
 	zlog.Debug(bytes, &bytes[0])
 	return bytes
 }

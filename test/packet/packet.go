@@ -1,36 +1,39 @@
 package packet
 
-import "github.com/ouczbs/zmin/engine/zconf"
+import (
+	"github.com/ouczbs/zmin/engine/data/zconf"
+)
+
 var (
-	packetPool = NewPacketPool(zconf.CQueuePacketSize)
+	packetPool      = NewPacketPool(zconf.CQueuePacketSize)
 	packetStackPool = NewPacketStackPool(zconf.CQueuePacketSize)
-	stackPoolType = 1 // 1 -> packetChanPool 2 -> packetStackPool
-	popCount = 0
-	pushCount = 0
+	stackPoolType   = 1 // 1 -> packetChanPool 2 -> packetStackPool
+	popCount        = 0
+	pushCount       = 0
 )
 
 type UPacket struct {
 	IsReleased bool
-	Size 		 TSize
-	bytes        []byte
+	Size       TSize
+	bytes      []byte
 }
 
 // NewPacket allocates a new packet
 func NewPacket() *UPacket {
-	var packet * UPacket
+	var packet *UPacket
 	if stackPoolType == 1 {
 		packet = packetPool.Pop()
-	}else {
-		packet =  packetStackPool.Pop()
+	} else {
+		packet = packetStackPool.Pop()
 	}
 	popCount++
 	packet.IsReleased = false
 	return packet
 }
-func (packet *UPacket) Init()  {
-	packet.bytes = make([]byte , 128)
+func (packet *UPacket) Init() {
+	packet.bytes = make([]byte, 128)
 }
-func (packet *UPacket) Release()  {
+func (packet *UPacket) Release() {
 	if packet.IsReleased {
 		return
 	}
@@ -38,8 +41,7 @@ func (packet *UPacket) Release()  {
 	pushCount++
 	if stackPoolType == 1 {
 		packetPool.Push(packet)
-	}else {
+	} else {
 		packetStackPool.Push(packet)
 	}
 }
-

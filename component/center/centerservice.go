@@ -2,10 +2,9 @@ package center
 
 import (
 	"github.com/ouczbs/zmin/component/base"
-	"github.com/ouczbs/zmin/engine/zattr"
-	"github.com/ouczbs/zmin/engine/zconf"
-	"github.com/ouczbs/zmin/engine/zlog"
-	"github.com/ouczbs/zmin/engine/znet"
+	"github.com/ouczbs/zmin/engine/core/zlog"
+	"github.com/ouczbs/zmin/engine/net/znet"
+	"github.com/ouczbs/zmin/engine/sync/zattr"
 )
 
 type UCenterService struct {
@@ -14,20 +13,20 @@ type UCenterService struct {
 
 func NewCenterService() *UCenterService {
 	return &UCenterService{
-		UService:base.NewService(reqHandleMaps),
+		UService: base.NewService(reqHandleMaps),
 	}
 }
-func (service * UCenterService)Run() {
+func (service *UCenterService) Run() {
 	service.UService.Run()
 	service.initService()
 	go service.MessageLoop()
 	znet.ServeTCPForever(service.Config.ListenAddr, service)
 }
-func (service *UCenterService) initService(){
-	logFile,ok := service.GetProperty(zattr.StringLogFile).(string)
-	if !ok{
-		logFile = zconf.CenterConfig.LogFile
+func (service *UCenterService) initService() {
+	logFile, ok := service.GetProperty(zattr.StringLogFile).(string)
+	if !ok {
+		logFile = base.CenterConfig.LogFile
 	}
-	zlog.SetOutput([]string{ "stderr", logFile })
+	zlog.SetOutput([]string{"stderr", logFile})
 	service.InitDownHandles()
 }

@@ -1,30 +1,31 @@
 package packet
 
 import (
-	"github.com/ouczbs/zmin/engine/zclass"
+	"github.com/ouczbs/zmin/engine/core/zclass"
 )
 
 type UPacketStackPool struct {
-	* zclass.UStackPool
+	*zclass.UStackPool
 }
+
 func NewPacketStackPool(size TSize) *UPacketStackPool {
 	stack := &UPacketStackPool{
 		&zclass.UStackPool{
-			Size: size,
+			Size:     size,
 			IsStatic: true,
 		},
 	}
 	stack.Init()
 	return stack
 }
-func (stack * UPacketStackPool) Pop() * UPacket{
+func (stack *UPacketStackPool) Pop() *UPacket {
 	object := stack.UStackPool.Pop()
 	if object == nil {
 		return stack.New()
 	}
 	return object.(*UPacket)
 }
-func (stack * UPacketStackPool) New() * UPacket{
+func (stack *UPacketStackPool) New() *UPacket {
 	packet := &UPacket{}
 	packet.Init()
 	return packet

@@ -1,12 +1,11 @@
 package gate
 
 import (
-	"zmin/engine/zutil"
 	"github.com/ouczbs/zmin/component/base"
-	"github.com/ouczbs/zmin/engine/zattr"
-	"github.com/ouczbs/zmin/engine/zconf"
-	"github.com/ouczbs/zmin/engine/zlog"
-	"github.com/ouczbs/zmin/engine/znet"
+	"github.com/ouczbs/zmin/engine/core/zlog"
+	"github.com/ouczbs/zmin/engine/core/zutil"
+	"github.com/ouczbs/zmin/engine/net/znet"
+	"github.com/ouczbs/zmin/engine/sync/zattr"
 	"net"
 )
 
@@ -16,22 +15,22 @@ type UGateService struct {
 
 func NewGateService() *UGateService {
 	return &UGateService{
-		UService:base.NewService(reqHandleMaps),
+		UService: base.NewService(reqHandleMaps),
 	}
 }
-func (service * UGateService)Run() {
+func (service *UGateService) Run() {
 	service.UService.Run()
 	service.initService()
 	go service.MessageLoop()
 	service.ConnectToCenter()
 	znet.ServeTCPForever(service.Config.ListenAddr, service)
 }
-func (service *UGateService) initService(){
-	logFile,ok := service.GetProperty(zattr.StringLogFile).(string)
-	if !ok{
-		logFile = zconf.GateConfig.LogFile
+func (service *UGateService) initService() {
+	logFile, ok := service.GetProperty(zattr.StringLogFile).(string)
+	if !ok {
+		logFile = base.GateConfig.LogFile
 	}
-	zlog.SetOutput([]string{ "stderr", logFile })
+	zlog.SetOutput([]string{"stderr", logFile})
 	service.InitDownHandles()
 }
 func (service *UGateService) NewTcpConnection(conn net.Conn) {

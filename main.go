@@ -1,26 +1,25 @@
 package main
 
 import (
+	"github.com/ouczbs/zmin/component/center"
+	"github.com/ouczbs/zmin/engine/core/zlog"
+	"github.com/ouczbs/zmin/engine/data/zcache"
+	"github.com/ouczbs/zmin/engine/data/zmodel"
+	"github.com/ouczbs/zmin/engine/sync/zpb"
+	"go.mongodb.org/mongo-driver/bson"
 	"os"
 	"os/exec"
 	"strconv"
 	"time"
-
-	"github.com/ouczbs/zmin/component/center"
-	"github.com/ouczbs/zmin/engine/zcache"
-	"github.com/ouczbs/zmin/engine/zlog"
-	"github.com/ouczbs/zmin/engine/zmodel"
-	"github.com/ouczbs/zmin/engine/zproto/zpb"
-	"go.mongodb.org/mongo-driver/bson"
 )
 
 var Service = zmodel.Service
 
-type UService = zmodel.UService
+type FService = zmodel.FService
 
 func main() {
 	zcache.InitMongoClient("mongodb://124.221.147.27:27017", "mmo")
-	zmodel.InitService()
+	InitService()
 	runCenter()
 	//runGate()
 	runLogin()
@@ -30,7 +29,7 @@ func main() {
 	}
 }
 func runCenter() {
-	var service UService
+	var service FService
 	err := zcache.GetMongoClient().FindOne(&service, bson.M{"type": zpb.COMPONENT_TYPE_CENTER})
 	if err != nil {
 		zlog.Error(err)
@@ -41,7 +40,7 @@ func runCenter() {
 	go center.Run()
 }
 func runGate() {
-	var service UService
+	var service FService
 	err := zcache.GetMongoClient().FindOne(&service, bson.M{"type": zpb.COMPONENT_TYPE_GATE})
 	if err != nil {
 		zlog.Error(err)
@@ -50,7 +49,7 @@ func runGate() {
 	runService(&service)
 }
 func runLogin() {
-	var serviceList []UService
+	var serviceList []FService
 	err := zcache.GetMongoClient().Find(Service, bson.M{"type": zpb.COMPONENT_TYPE_LOGIN}, &serviceList)
 	if err != nil {
 		zlog.Error(err)
@@ -61,7 +60,7 @@ func runLogin() {
 	}
 }
 func runDispatcher() {
-	var serviceList []UService
+	var serviceList []FService
 	err := zcache.GetMongoClient().Find(Service, bson.M{"type": zpb.COMPONENT_TYPE_DISPATCHER}, &serviceList)
 	if err != nil {
 		zlog.Error(err)
@@ -71,7 +70,7 @@ func runDispatcher() {
 		runService(&service)
 	}
 }
-func runService(service *UService) {
+func runService(service *FService) {
 	args := []string{"run", service.Path, "-ComponentId", strconv.Itoa(int(service.Id)), "-ListenAddr", service.ListenAddr, service.Property}
 	cmd := exec.Command("go", args...)
 	err := cmd.Start()

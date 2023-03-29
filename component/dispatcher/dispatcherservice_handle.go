@@ -1,24 +1,28 @@
 package dispatcher
 
 import (
-	"github.com/ouczbs/zmin/engine/zattr"
-	"github.com/ouczbs/zmin/engine/zconf"
-	"github.com/ouczbs/zmin/engine/zlog"
-	"github.com/ouczbs/zmin/engine/znet"
-	"github.com/ouczbs/zmin/engine/zproto"
-	"github.com/ouczbs/zmin/engine/zproto/zpb"
+	"github.com/ouczbs/zmin/engine/core/zlog"
+	"github.com/ouczbs/zmin/engine/data/zconf"
+	"github.com/ouczbs/zmin/engine/net/zmessage"
+	"github.com/ouczbs/zmin/engine/sync/zattr"
+	"github.com/ouczbs/zmin/engine/sync/zpb"
+	"github.com/ouczbs/zmin/engine/sync/zproto"
 )
 
 func (service *UDispatcherService) MessageLoop() {
 	for {
 		select {
 		case message := <-service.MessageQueue:
-			proxy := message.Proxy
+			proxy, ok := message.Proxy.(*UClientProxy)
+			if !ok {
+				zlog.Error("MessageLoop Recv Unknown Proxy", proxy)
+				break
+			}
 			messageType := message.MessageType
 			packet := message.Packet
 			switch messageType {
 			case zconf.MT_TO_SERVER, zconf.MT_BROADCAST:
-				zproto.PbMessageHandle(proxy, packet , message.Cmd)
+				zproto.PbMessageHandle(proxy, packet, message.Cmd)
 			default:
 
 			}
@@ -45,7 +49,7 @@ func (service *UDispatcherService) ConnectToCenter() {
 		Type:        zpb.COMPONENT_TYPE_DISPATCHER,
 		ListenAddr:  service.Config.ListenAddr,
 	}
-	request := znet.NewRequest(TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_TO_SERVER , message)
+	request := zmessage.NewRequest(TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_TO_SERVER, message)
 	zproto.SendPbMessage(centerProxy, request)
 	request.Release()
 }
