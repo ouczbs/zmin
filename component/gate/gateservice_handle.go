@@ -40,9 +40,9 @@ func (service *UGateService) MessageLoop() {
 }
 func (service *UGateService) InitDownHandles() {
 	service.UService.InitDownHandles()
-	reqHandleMaps[TCmd(zpb.CommandList_MT_SYNC_PROXY_PROPERTY)] = service.SyncProxyProperty
-	reqHandleMaps[TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT)] = service.AddEngineComponent
-	reqHandleMaps[TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT_ACK)] = service.AddEngineComponentAck
+	reqHandleMaps[zconf.MT_SYNC_PROXY_PROPERTY] = service.SyncProxyProperty
+	reqHandleMaps[zconf.MT_ADD_ENGINE_COMPONENT] = service.AddEngineComponent
+	reqHandleMaps[zconf.MT_ADD_ENGINE_COMPONENT_ACK] = service.AddEngineComponentAck
 }
 func (service *UGateService) ConnectToCenter() {
 	centerProxy = service.MakeCenterProxy()
@@ -51,10 +51,10 @@ func (service *UGateService) ConnectToCenter() {
 	}
 	message := &zpb.ADD_ENGINE_COMPONENT{
 		ComponentId: service.Config.ComponentId,
-		Type:        zpb.COMPONENT_TYPE_GATE,
+		Type:        zconf.COMPONENT_TYPE_GATE,
 		ListenAddr:  service.Config.ListenAddr,
 	}
-	request := zmessage.NewRequest(TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_TO_SERVER, message)
+	request := zmessage.NewRequest(zconf.MT_ADD_ENGINE_COMPONENT, zconf.MT_TO_SERVER, message)
 	zproto.SendPbMessage(centerProxy, request)
 	request.Release()
 }
@@ -65,9 +65,9 @@ func (service *UGateService) AddEngineComponentAck(proxy *UClientProxy, request 
 		return
 	}
 	proxy.SetProperty(zattr.Int32ComponentId, int32(message.ComponentId))
-	proxy.SetProperty(zattr.Int32ComponentType, int32(zpb.COMPONENT_TYPE_CENTER))
+	proxy.SetProperty(zattr.Int32ComponentType, int32(zconf.COMPONENT_TYPE_CENTER))
 	for _, game := range message.ComponentList {
-		service.MakeClientProxy(string(game.ListenAddr), zpb.COMPONENT_TYPE_GAME)
+		service.MakeClientProxy(string(game.ListenAddr), zconf.COMPONENT_TYPE_GAME)
 		zlog.Debug("AddEngineComponentAck:login listen addr: ", game.ListenAddr)
 	}
 }
@@ -77,7 +77,7 @@ func (service *UGateService) AddEngineComponent(proxy *UClientProxy, request *UR
 		zlog.Error("AddEngineComponent recv error request : ", proxy, request)
 		return
 	}
-	service.MakeClientProxy(string(message.ListenAddr), zpb.COMPONENT_TYPE_GAME)
+	service.MakeClientProxy(string(message.ListenAddr), zconf.COMPONENT_TYPE_GAME)
 	zlog.Debug("AddEngineComponent ", message.Type, message.ListenAddr)
 }
 func (service *UGateService) ForwardToGame(proxy *UClientProxy, messageType TMessageType, packet *UPacket) {
@@ -101,7 +101,7 @@ func (service *UGateService) ForwardToClient(packet *UPacket) {
 func (service *UGateService) SyncProxyProperty(proxy *UClientProxy, request *URequest) {
 	service.UService.SyncProxyProperty(proxy, request)
 	componentType, ok := proxy.GetProperty(zattr.Int32ComponentType).(int32)
-	if ok && componentType == int32(zpb.COMPONENT_TYPE_GAME) {
+	if ok && componentType == int32(zconf.COMPONENT_TYPE_GAME) {
 		if messageType, ok := proxy.GetProperty(zattr.Int32MessageType).(int32); ok {
 			gameMessageMaps[TMessageType(messageType)] = proxy
 		}

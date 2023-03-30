@@ -32,7 +32,7 @@ func (service *UService) ClientDisconnect(proxy *UClientProxy) {
 	zlog.Debugf("ClientDisconnect %s", proxy)
 	t, ok := proxy.GetProperty(zattr.Int32ComponentType).(int32)
 	zlog.Infof(" ClientDisconnect   ", t)
-	if ok && t == int32(zpb.COMPONENT_TYPE_CENTER) {
+	if ok && t == int32(zconf.COMPONENT_TYPE_CENTER) {
 		zlog.Infof(" Center client notify exit process !!!")
 		service.Close()
 	}
@@ -64,9 +64,9 @@ func (service *UService) SyncProxyProperty(proxy *UClientProxy, request *UReques
 }
 func (service *UService) InitDownHandles() {
 	service.SetProperty(zattr.StringCenterAddr, GetCenterConfig().ListenAddr)
-	service.ReqHandleMaps[TCmd(zpb.CommandList_MT_SYNC_PROXY_PROPERTY)] = service.SyncProxyProperty
+	service.ReqHandleMaps[zconf.MT_SYNC_PROXY_PROPERTY] = service.SyncProxyProperty
 }
-func (service *UService) MakeClientProxy(addr string, componentType zpb.COMPONENT_TYPE) *znet.UClientProxy {
+func (service *UService) MakeClientProxy(addr string, componentType TComponentType) *znet.UClientProxy {
 	conn, err := net.Dial("tcp", addr)
 	if err != nil {
 		zlog.Infof(" MakeClientProxy error , addr %s , err %s", addr, err)
@@ -83,7 +83,7 @@ func (service *UService) MakeCenterProxy() *znet.UClientProxy {
 		zlog.Error("ConnectToCenter :attr k:", zattr.StringListenAddr)
 		return nil
 	}
-	centerProxy := service.MakeClientProxy(addr, zpb.COMPONENT_TYPE_CENTER)
+	centerProxy := service.MakeClientProxy(addr, zconf.COMPONENT_TYPE_CENTER)
 	return centerProxy
 }
 func (service *UService) ParseCmd() bool {

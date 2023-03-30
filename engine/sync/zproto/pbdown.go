@@ -1,16 +1,15 @@
 package zproto
 
 import (
+	"github.com/ouczbs/zmin/engine/data/zconf"
 	"github.com/ouczbs/zmin/engine/net/zmessage"
-	"github.com/ouczbs/zmin/engine/sync/zpb"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/reflect/protoregistry"
-	"strings"
 )
 
 var (
 	pbMessageTypes  = make(map[TCmd]IReflectMessageType)
-	CommandListName = zpb.CommandList_name
+	CommandListName = zconf.CommandList_name
 )
 
 func PbMessageHandle(proxy *UClientProxy, packet *UPacket, cmd TCmd) {
@@ -39,7 +38,6 @@ func newPbMessage(cmd TCmd) (IReflectMessage, error) {
 		return messageType.New().Interface(), nil
 	}
 	pbName := CommandListName[int32(cmd)]
-	pbName = strings.Replace(pbName, "MT_", "zpb.", 1)
 	messageType, err := protoregistry.GlobalTypes.FindMessageByName(protoreflect.FullName(pbName))
 	if err != nil {
 		return nil, err

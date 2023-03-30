@@ -35,7 +35,7 @@ func (service *UCenterService) MessageLoop() {
 	}
 }
 func (service *UCenterService) UtilBroadcastAddEngineComponent(message *zpb.ADD_ENGINE_COMPONENT, componentMaps TProxyMap) {
-	request := zmessage.NewRequest(TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_BROADCAST, message)
+	request := zmessage.NewRequest(zconf.MT_ADD_ENGINE_COMPONENT, zconf.MT_BROADCAST, message)
 	packet := zproto.MakePbMessagePacket(request)
 	for _, comp := range componentMaps {
 		comp.SendPacket(packet)
@@ -54,7 +54,7 @@ func (service *UCenterService) UtilAddEngineComponentAck(proxy *UClientProxy, co
 			message.ComponentList = append(message.ComponentList, component)
 		}
 	}
-	request := zmessage.NewRequest(TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT_ACK), zconf.MT_TO_SERVER, message)
+	request := zmessage.NewRequest(zconf.MT_ADD_ENGINE_COMPONENT_ACK, zconf.MT_TO_SERVER, message)
 	zproto.ResponseMessage(proxy, request)
 	request.Release()
 }
@@ -69,20 +69,20 @@ func (service *UCenterService) AddEngineComponent(proxy *UClientProxy, request *
 	proxy.SetProperty(zattr.Int32ComponentType, int32(message.Type))
 	proxy.SetProperty(zattr.StringListenAddr, string(message.ListenAddr))
 	switch message.Type {
-	case zpb.COMPONENT_TYPE_GAME:
+	case zconf.COMPONENT_TYPE_GAME:
 		gameProxyMaps[sequence] = proxy
 		service.UtilAddEngineComponentAck(proxy, dispatcherProxyMaps)
 		service.UtilBroadcastAddEngineComponent(message, loginProxyMaps)
 		service.UtilBroadcastAddEngineComponent(message, gateProxyMaps)
-	case zpb.COMPONENT_TYPE_LOGIN:
+	case zconf.COMPONENT_TYPE_LOGIN:
 		loginProxyMaps[sequence] = proxy
 		service.UtilAddEngineComponentAck(proxy, gameProxyMaps)
 		service.UtilBroadcastAddEngineComponent(message, gateProxyMaps)
-	case zpb.COMPONENT_TYPE_DISPATCHER:
+	case zconf.COMPONENT_TYPE_DISPATCHER:
 		dispatcherProxyMaps[sequence] = proxy
 		service.UtilAddEngineComponentAck(proxy, nil)
 		service.UtilBroadcastAddEngineComponent(message, gameProxyMaps)
-	case zpb.COMPONENT_TYPE_GATE:
+	case zconf.COMPONENT_TYPE_GATE:
 		gateProxyMaps[sequence] = proxy
 		service.UtilAddEngineComponentAck(proxy, gameProxyMaps)
 	}
@@ -91,5 +91,5 @@ func (service *UCenterService) AddEngineComponent(proxy *UClientProxy, request *
 }
 func (service *UCenterService) InitDownHandles() {
 	service.UService.InitDownHandles()
-	reqHandleMaps[TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT)] = service.AddEngineComponent
+	reqHandleMaps[zconf.MT_ADD_ENGINE_COMPONENT] = service.AddEngineComponent
 }

@@ -10,9 +10,15 @@ import (
 )
 
 const (
-	_MT_SYNC_PROXY_PROPERTY = TCmd(zpb.CommandList_MT_SYNC_PROXY_PROPERTY)
+	_MT_SYNC_PROXY_PROPERTY = zconf.MT_SYNC_PROXY_PROPERTY
 	_MT_SET_REMOTE_PROPERTY = _MT_SYNC_PROXY_PROPERTY
 	_MT_TO_ALL              = zconf.MT_TO_ALL
+)
+const (
+	Property_Type_INT32 = 1 + iota
+	Property_Type_String
+	Property_Type_INT64
+	Property_Type_BOOL
 )
 
 func SetRemoteProperty(proxy *UClientProxy, key TEnum, value interface{}) {
@@ -53,14 +59,14 @@ func SyncProxyPropertyMaps(proxy *UClientProxy) {
 }
 func ReadProperty(p *zpb.Property) interface{} {
 	switch p.Type {
-	case zpb.Property_Type_INT32:
+	case Property_Type_INT32:
 		return p.PInt
-	case zpb.Property_Type_String:
-		return p.PString
-	case zpb.Property_Type_BOOL:
+	case Property_Type_BOOL:
 		return p.PBool
-	default:
+	case Property_Type_INT64:
 		return p.PFloat
+	default:
+		return p.PString
 	}
 }
 func ConvertProperty(ts string, s string) interface{} {
@@ -68,18 +74,18 @@ func ConvertProperty(ts string, s string) interface{} {
 	if err != nil {
 		return nil
 	}
-	switch zpb.Property_Type(t) {
-	case zpb.Property_Type_INT32:
+	switch t {
+	case Property_Type_INT32:
 		i, _ := strconv.ParseUint(s, 10, 32)
 		return i
-	case zpb.Property_Type_String:
-		return s
-	case zpb.Property_Type_BOOL:
+	case Property_Type_BOOL:
 		b, _ := strconv.ParseBool(s)
 		return b
-	default:
+	case Property_Type_String:
 		f, _ := strconv.ParseFloat(s, 32)
 		return f
+	default:
+		return s
 	}
 }
 func WriteProperty(v interface{}) *zpb.Property {
@@ -97,25 +103,25 @@ type FPropertyOption func(property *zpb.Property)
 func WithBool(v bool) FPropertyOption {
 	return func(property *zpb.Property) {
 		property.PBool = v
-		property.Type = zpb.Property_Type_BOOL
+		property.Type = Property_Type_BOOL
 	}
 }
 func WithInt32(v int32) FPropertyOption {
 	return func(property *zpb.Property) {
 		property.PInt = v
-		property.Type = zpb.Property_Type_INT32
+		property.Type = Property_Type_INT32
 	}
 }
 func WithInt64(v uint64) FPropertyOption {
 	return func(property *zpb.Property) {
 		property.PFloat = v
-		property.Type = zpb.Property_Type_INT64
+		property.Type = Property_Type_INT64
 	}
 }
 func WithString(str string) FPropertyOption {
 	return func(property *zpb.Property) {
 		property.PString = str
-		property.Type = zpb.Property_Type_String
+		property.Type = Property_Type_String
 	}
 }
 func OptionOf(v interface{}) FPropertyOption {

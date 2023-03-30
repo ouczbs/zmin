@@ -36,7 +36,7 @@ func (service *UDispatcherService) MessageLoop() {
 }
 func (service *UDispatcherService) InitDownHandles() {
 	service.UService.InitDownHandles()
-	reqHandleMaps[TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT_ACK)] = service.AddEngineComponentAck
+	reqHandleMaps[zconf.MT_ADD_ENGINE_COMPONENT_ACK] = service.AddEngineComponentAck
 }
 func (service *UDispatcherService) ConnectToCenter() {
 	centerProxy = service.MakeCenterProxy()
@@ -46,10 +46,10 @@ func (service *UDispatcherService) ConnectToCenter() {
 
 	message := &zpb.ADD_ENGINE_COMPONENT{
 		ComponentId: service.Config.ComponentId,
-		Type:        zpb.COMPONENT_TYPE_DISPATCHER,
+		Type:        zconf.COMPONENT_TYPE_DISPATCHER,
 		ListenAddr:  service.Config.ListenAddr,
 	}
-	request := zmessage.NewRequest(TCmd(zpb.CommandList_MT_ADD_ENGINE_COMPONENT), zconf.MT_TO_SERVER, message)
+	request := zmessage.NewRequest(zconf.MT_ADD_ENGINE_COMPONENT, zconf.MT_TO_SERVER, message)
 	zproto.SendPbMessage(centerProxy, request)
 	request.Release()
 }
@@ -60,5 +60,5 @@ func (service *UDispatcherService) AddEngineComponentAck(proxy *UClientProxy, re
 		return
 	}
 	proxy.SetProperty(zattr.Int32ComponentId, int32(message.ComponentId))
-	proxy.SetProperty(zattr.Int32ComponentType, int32(zpb.COMPONENT_TYPE_CENTER))
+	proxy.SetProperty(zattr.Int32ComponentType, int32(zconf.COMPONENT_TYPE_CENTER))
 }

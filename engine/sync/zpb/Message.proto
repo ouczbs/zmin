@@ -1,23 +1,8 @@
 syntax = "proto3";
 package zpb;
 option go_package = ".;zpb";
-enum COMPONENT_TYPE
-{
-    CENTER = 0 ;
-    DISPATCHER = 1 ;
-    LOGIN = 2 ;
-    GATE = 3 ;
-    GAME = 4 ;
-}
-enum Property_Type{
-    INVALID = 0;
-    INT32 = 1;
-    String = 2;
-    INT64 = 3;
-    BOOL = 4;
-}
 message Property{
-    Property_Type type = 1;
+    int32 type = 1;
     int32 p_int = 2;
     string  p_string = 3;
     uint64 p_float = 4;
@@ -29,9 +14,9 @@ message PropertyMap{
 }
 message ADD_ENGINE_COMPONENT
 {
-  COMPONENT_TYPE type   = 1;
-  string listen_addr = 2;
-  int32 component_id = 3;
+    int32 type   = 1;
+    string listen_addr = 2;
+    int32 component_id = 3;
 }
 message ADD_ENGINE_COMPONENT_ACK
 {

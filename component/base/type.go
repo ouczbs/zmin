@@ -16,8 +16,9 @@ type (
 
 	IService = znet.IService
 
-	TCmd  = zconf.TCmd
-	TEnum = zconf.TEnum
+	TCmd           = zconf.TCmd
+	TEnum          = zconf.TEnum
+	TComponentType = zconf.TComponentType
 )
 
 type UServiceConfig struct {
