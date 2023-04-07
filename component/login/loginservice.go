@@ -2,7 +2,6 @@ package login
 
 import (
 	"github.com/ouczbs/zmin/component/base"
-	"github.com/ouczbs/zmin/engine/core/zlog"
 	"github.com/ouczbs/zmin/engine/core/zutil"
 	"github.com/ouczbs/zmin/engine/net/znet"
 	"github.com/ouczbs/zmin/engine/sync/zattr"
@@ -19,18 +18,13 @@ func NewLoginService() *ULoginService {
 	}
 }
 func (service *ULoginService) Run() {
-	service.UService.Run()
+	service.InitConfig()
 	service.initService()
 	go service.MessageLoop()
 	service.ConnectToCenter()
 	znet.ServeTCPForever(service.Config.ListenAddr, service)
 }
 func (service *ULoginService) initService() {
-	logFile, ok := service.GetProperty(zattr.StringLogFile).(string)
-	if !ok {
-		logFile = base.LoginConfig.LogFile
-	}
-	zlog.SetOutput([]string{"stderr", logFile})
 	service.InitDownHandles()
 }
 func (service *ULoginService) NewTcpConnection(conn net.Conn) {

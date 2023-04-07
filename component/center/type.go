@@ -28,6 +28,8 @@ type (
 var (
 	reqHandleMaps = make(map[TCmd]FRequestHandle)
 
+	versionProxy *UClientProxy
+
 	gateProxyMaps       = make(TProxyMap)
 	loginProxyMaps      = make(TProxyMap)
 	gameProxyMaps       = make(TProxyMap)

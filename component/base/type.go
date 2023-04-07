@@ -21,59 +21,19 @@ type (
 	TComponentType = zconf.TComponentType
 )
 
-type UServiceConfig struct {
+type FServiceConfig struct {
 	ListenAddr    string
+	OwnerAddr     string
 	ComponentType int32
 	ComponentId   int32
-}
-type UCenterConfig struct {
-	ListenAddr    string
-	AdvertiseAddr string
-	HTTPAddr      string
 	LogFile       string
-	LogStderr     bool
 	LogLevel      string
-}
-
-// DispatcherConfig defines fields of dispatcher config
-type UDispatcherConfig struct {
-	ListenAddr    string
-	AdvertiseAddr string
-	HTTPAddr      string
-	LogFile       string
-	LogStderr     bool
-	LogLevel      string
-}
-type UGateConfig struct {
-	ListenAddr    string
-	AdvertiseAddr string
-	HTTPAddr      string
-	LogFile       string
-	LogStderr     bool
-	LogLevel      string
-}
-type ULoginConfig struct {
-	ListenAddr    string
-	AdvertiseAddr string
-	HTTPAddr      string
-	LogFile       string
-	LogStderr     bool
-	LogLevel      string
-}
-type UGameConfig struct {
-	ListenAddr    string
-	AdvertiseAddr string
-	HTTPAddr      string
-	LogFile       string
-	LogStderr     bool
-	LogLevel      string
+	Property      string
 }
 
 // KVDBConfig defines fields of KVDB config
-type UKVDBConfig struct {
-	Type       string
-	Url        string // MongoDB
-	DB         string // MongoDB
-	Collection string // MongoDB
-	Driver     string // SQL Driver: e.x. mysql
+type FKVDBConfig struct {
+	Url    string // MongoDB
+	DB     string // MongoDB
+	Driver string // SQL Driver: e.x. mysql
 }

@@ -45,7 +45,7 @@ func (service *ULoginService) InitDownHandles() {
 	service.ReqHandleMaps[zconf.MT_SYNC_PROXY_PROPERTY] = service.SyncProxyProperty
 }
 func (service *ULoginService) ConnectToCenter() {
-	centerProxy = service.MakeCenterProxy()
+	centerProxy = service.MakeOwnerProxy(zconf.COMPONENT_TYPE_VERSION)
 	if centerProxy == nil {
 		service.Close()
 	}

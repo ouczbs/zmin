@@ -45,7 +45,7 @@ func (service *UGateService) InitDownHandles() {
 	reqHandleMaps[zconf.MT_ADD_ENGINE_COMPONENT_ACK] = service.AddEngineComponentAck
 }
 func (service *UGateService) ConnectToCenter() {
-	centerProxy = service.MakeCenterProxy()
+	centerProxy = service.MakeOwnerProxy(zconf.COMPONENT_TYPE_CENTER)
 	if centerProxy == nil {
 		service.Close()
 	}

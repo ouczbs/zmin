@@ -4,6 +4,7 @@ type FService struct {
 	Id         TComponentId
 	Type       TComponentType
 	ListenAddr string
+	OwnerAddr  string
 	Path       string
 	Property   string
 }

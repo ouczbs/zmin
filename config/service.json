@@ -1,0 +1,87 @@
+{
+	"Version": {
+		"ListenAddr": "127.0.0.1:9000",
+		"OwnerAddr": "",
+		"ComponentType": 0,
+		"ComponentId": 1,
+		"LogFile": "version.log",
+		"LogLevel": "debug",
+		"Property": ""
+	},
+	"CenterList": [
+		{
+			"ListenAddr": "127.0.0.1:11000",
+			"OwnerAddr": "127.0.0.1:9000",
+			"ComponentType": 1,
+			"ComponentId": 4,
+			"LogFile": "center1.log",
+			"LogLevel": "debug",
+			"Property": ""
+		}
+	],
+	"LoginList": [
+		{
+			"ListenAddr": "127.0.0.1:10000",
+			"OwnerAddr": "127.0.0.1:9000",
+			"ComponentType": 3,
+			"ComponentId": 2,
+			"LogFile": "login1.log",
+			"LogLevel": "debug",
+			"Property": ""
+		},
+		{
+			"ListenAddr": "127.0.0.1:10001",
+			"OwnerAddr": "127.0.0.1:9000",
+			"ComponentType": 3,
+			"ComponentId": 3,
+			"LogFile": "login2.log",
+			"LogLevel": "debug",
+			"Property": ""
+		}
+	],
+	"GateList": [
+		{
+			"ListenAddr": "127.0.0.1:12000",
+			"OwnerAddr": "127.0.0.1:11000",
+			"ComponentType": 4,
+			"ComponentId": 5,
+			"LogFile": "gate1.log",
+			"LogLevel": "debug",
+			"Property": ""
+		},
+		{
+			"ListenAddr": "127.0.0.1:12001",
+			"OwnerAddr": "127.0.0.1:11000",
+			"ComponentType": 4,
+			"ComponentId": 6,
+			"LogFile": "gate2.log",
+			"LogLevel": "debug",
+			"Property": ""
+		}
+	],
+	"DispatcherList": [
+		{
+			"ListenAddr": "127.0.0.1:13000",
+			"OwnerAddr": "127.0.0.1:11000",
+			"ComponentType": 2,
+			"ComponentId": 7,
+			"LogFile": "dispatcher1.log",
+			"LogLevel": "debug",
+			"Property": ""
+		},
+		{
+			"ListenAddr": "127.0.0.1:13001",
+			"OwnerAddr": "127.0.0.1:11000",
+			"ComponentType": 2,
+			"ComponentId": 8,
+			"LogFile": "dispatcher2.log",
+			"LogLevel": "debug",
+			"Property": ""
+		}
+	],
+	"MongoDB": {
+		"Url": "mongodb://124.221.147.27:27017",
+		"DB": "mmo",
+		"Driver": "mongodb"
+	}
+}

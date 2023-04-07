@@ -1,56 +1,72 @@
 package base
 
-func GetCenterConfig() *UCenterConfig {
-	return &UCenterConfig{
-		ListenAddr: "127.0.0.1:9999",
-		HTTPAddr:   "127.0.0.1:9999",
-		LogFile:    "center.log",
-		LogLevel:   "debug",
-	}
+import (
+	"encoding/json"
+	"flag"
+	"os"
+	"path"
+	"path/filepath"
+	"runtime"
+)
+
+type FServiceConfigFile struct {
+	Version        FServiceConfig
+	CenterList     []FServiceConfig
+	LoginList      []FServiceConfig
+	GateList       []FServiceConfig
+	DispatcherList []FServiceConfig
+
+	MongoDB FKVDBConfig
 }
 
 var (
-	CenterConfig     = GetCenterConfig()
-	LoginConfig      = GetLoginConfig()
-	GateConfig       = GetGateConfig()
-	DispatcherConfig = GetDispatcherConfig()
+	ServiceConfigFile FServiceConfigFile
+	AppPath           string
+	ComponentId       int32
 )
 
-func GetLoginConfig() *ULoginConfig {
-	return &ULoginConfig{
-		ListenAddr: "127.0.0.1:11001",
-		HTTPAddr:   "127.0.0.1:11001",
-		LogFile:    "login.log",
-		LogLevel:   "debug",
+func LoadServiceFile(serviceFile string) {
+	_, curPath, _, ok := runtime.Caller(0)
+	if ok {
+		AppPath = path.Dir(filepath.Join(curPath, "../../"))
 	}
+	appConfigPath := filepath.Join(AppPath, "config", serviceFile)
+	bytes, _ := os.ReadFile(appConfigPath)
+	json.Unmarshal(bytes, &ServiceConfigFile)
 }
-func GetGateConfig() *UGateConfig {
-	return &UGateConfig{
-		ListenAddr: "127.0.0.1:13001",
-		HTTPAddr:   "127.0.0.1:13001",
-		LogFile:    "gate.log",
-		LogLevel:   "debug",
+func init() {
+	serviceFile := flag.String("config", "service.json", "config")
+	cid := flag.Int("ComponentId", 0, "component id")
+	flag.Parse()
+	ComponentId = int32(*cid)
+	LoadServiceFile(*serviceFile)
+}
+func getServiceConfig(ComponentId int32) *FServiceConfig {
+	if ServiceConfigFile.Version.ComponentId == ComponentId {
+		return &ServiceConfigFile.Version
 	}
-}
-func GetDispatcherConfig() *UDispatcherConfig {
-	return &UDispatcherConfig{
-		ListenAddr: "127.0.0.1:12001",
-		HTTPAddr:   "127.0.0.1:12001",
-		LogFile:    "dispatcher.log",
-		LogLevel:   "debug",
+	for _, service := range ServiceConfigFile.CenterList {
+		if service.ComponentId == ComponentId {
+			return &service
+		}
 	}
-}
-func GetGameConfig() *UGameConfig {
-	return &UGameConfig{
-		ListenAddr: "127.0.0.1:14001",
-		HTTPAddr:   "127.0.0.1:14001",
-		LogFile:    "game.log",
-		LogLevel:   "debug",
-	}
-}
 
-var Database = &UKVDBConfig{
-	Url:        "mongodb://111.229.54.9:27017/tree",
-	DB:         "tree",
-	Collection: "__kv__",
+	for _, service := range ServiceConfigFile.LoginList {
+		if service.ComponentId == ComponentId {
+			return &service
+		}
+	}
+
+	for _, service := range ServiceConfigFile.GateList {
+		if service.ComponentId == ComponentId {
+			return &service
+		}
+	}
+
+	for _, service := range ServiceConfigFile.DispatcherList {
+		if service.ComponentId == ComponentId {
+			return &service
+		}
+	}
+	return nil
 }

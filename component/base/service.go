@@ -1,7 +1,6 @@
 package base
 
 import (
-	"flag"
 	"github.com/ouczbs/zmin/engine/core/zclass"
 	"github.com/ouczbs/zmin/engine/core/zlog"
 	"github.com/ouczbs/zmin/engine/data/zconf"
@@ -10,14 +9,16 @@ import (
 	"github.com/ouczbs/zmin/engine/sync/zpb"
 	"net"
 	"os"
+	"path/filepath"
 	"strconv"
+	"strings"
 )
 
 type UService struct {
 	*UProperty
 	ReqHandleMaps map[TCmd]FRequestHandle
 	MessageQueue  chan *UMessage
-	Config        *UServiceConfig
+	Config        *FServiceConfig
 }
 
 func NewService(reqHandleMaps map[TCmd]FRequestHandle) *UService {
@@ -25,7 +26,7 @@ func NewService(reqHandleMaps map[TCmd]FRequestHandle) *UService {
 		UProperty:     zclass.NewProperty(),
 		ReqHandleMaps: reqHandleMaps,
 		MessageQueue:  make(chan *UMessage, zconf.CQueueMessageSize),
-		Config:        &UServiceConfig{},
+		Config:        nil,
 	}
 }
 func (service *UService) ClientDisconnect(proxy *UClientProxy) {
@@ -63,7 +64,6 @@ func (service *UService) SyncProxyProperty(proxy *UClientProxy, request *UReques
 	request.Release()
 }
 func (service *UService) InitDownHandles() {
-	service.SetProperty(zattr.StringCenterAddr, GetCenterConfig().ListenAddr)
 	service.ReqHandleMaps[zconf.MT_SYNC_PROXY_PROPERTY] = service.SyncProxyProperty
 }
 func (service *UService) MakeClientProxy(addr string, componentType TComponentType) *znet.UClientProxy {
@@ -77,45 +77,31 @@ func (service *UService) MakeClientProxy(addr string, componentType TComponentTy
 	go proxy.Serve()
 	return proxy
 }
-func (service *UService) MakeCenterProxy() *znet.UClientProxy {
-	addr, ok := service.GetProperty(zattr.StringCenterAddr).(string)
-	if !ok {
-		zlog.Error("ConnectToCenter :attr k:", zattr.StringListenAddr)
-		return nil
-	}
-	centerProxy := service.MakeClientProxy(addr, zconf.COMPONENT_TYPE_CENTER)
-	return centerProxy
+func (service *UService) MakeOwnerProxy(ownerType TComponentType) *znet.UClientProxy {
+	ownerProxy := service.MakeClientProxy(service.Config.OwnerAddr, ownerType)
+	return ownerProxy
 }
-func (service *UService) ParseCmd() bool {
-	componentId := flag.Int("ComponentId", 0, "component id")
-	listenAddr := flag.String("ListenAddr", "", "listenAddr")
-	flag.Parse()
-	if *componentId == 0 || *listenAddr == "" {
-		zlog.Debug("args not enough")
-		zlog.Debug(*componentId, *listenAddr)
-		return false
+func (service *UService) InitConfig() {
+	config := getServiceConfig(ComponentId)
+	if ComponentId == 0 || config == nil {
+		zlog.Debugf("start process failed , componentId is %d", ComponentId)
+		zlog.Debugf("app path is %s", AppPath)
+		os.Exit(0)
 	}
-	config := service.Config
-	config.ListenAddr = *listenAddr
-	config.ComponentId = int32(*componentId)
-	args := flag.Args()
-	l := len(args)
+	service.Config = config
+	if config.LogFile != "" {
+		logfile := filepath.Join(AppPath, "run/log", config.LogFile)
+		zlog.SetOutput([]string{"stderr", logfile})
+	}
+	property := strings.Fields(config.Property)
+	l := len(property)
 	for i := 0; i < l; i += 3 {
-		k, err := strconv.Atoi(args[i])
+		k, err := strconv.Atoi(property[i])
 		if err != nil {
 			continue
 		}
-		t := args[i+1]
-		v := args[i+2]
+		t := property[i+1]
+		v := property[i+2]
 		service.SetProperty(TEnum(k), zattr.ConvertProperty(t, v))
-	}
-	zlog.Debug(flag.Args(), config)
-	return true
-}
-func (service *UService) Run() {
-	ok := service.ParseCmd()
-	if !ok {
-		zlog.Debugf("restart process failed")
-		os.Exit(0)
 	}
 }

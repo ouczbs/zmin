@@ -1,0 +1,39 @@
+{
+	"Version": {
+		"ListenAddr": "127.0.0.1:9000",
+		"OwnerAddr": "",
+		"ComponentType": 0,
+		"ComponentId": 1,
+		"LogFile": "version.log",
+		"LogLevel": "debug",
+		"Property": ""
+	},
+	"CenterList": null,
+	"LoginList": [
+		{
+			"ListenAddr": "127.0.0.1:10000",
+			"OwnerAddr": "127.0.0.1:9000",
+			"ComponentType": 3,
+			"ComponentId": 2,
+			"LogFile": "login1.log",
+			"LogLevel": "debug",
+			"Property": ""
+		},
+		{
+			"ListenAddr": "127.0.0.1:10001",
+			"OwnerAddr": "127.0.0.1:9000",
+			"ComponentType": 3,
+			"ComponentId": 3,
+			"LogFile": "login2.log",
+			"LogLevel": "debug",
+			"Property": ""
+		}
+	],
+	"GateList": null,
+	"DispatcherList": null,
+	"MongoDB": {
+		"Url": "mongodb://124.221.147.27:27017",
+		"DB": "mmo",
+		"Driver": "mongodb"
+	}
+}

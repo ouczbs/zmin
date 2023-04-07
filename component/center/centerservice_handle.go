@@ -9,6 +9,20 @@ import (
 	"github.com/ouczbs/zmin/engine/sync/zproto"
 )
 
+func (service *UCenterService) ConnectToVersion() {
+	versionProxy = service.MakeOwnerProxy(zconf.COMPONENT_TYPE_VERSION)
+	if versionProxy == nil {
+		service.Close()
+	}
+	message := &zpb.ADD_ENGINE_COMPONENT{
+		ComponentId: service.Config.ComponentId,
+		Type:        zconf.COMPONENT_TYPE_LOGIN,
+		ListenAddr:  service.Config.ListenAddr,
+	}
+	request := zmessage.NewRequest(zconf.MT_ADD_ENGINE_COMPONENT, zconf.MT_TO_SERVER, message)
+	zproto.SendPbMessage(versionProxy, request)
+	request.Release()
+}
 func (service *UCenterService) MessageLoop() {
 	for {
 		select {
