@@ -19,6 +19,8 @@ type (
 	TCmd           = zconf.TCmd
 	TEnum          = zconf.TEnum
 	TComponentType = zconf.TComponentType
+	TComponentId   = zconf.TComponentId
+	TProxyMap      = map[TComponentId]*UClientProxy
 )
 
 type FServiceConfig struct {

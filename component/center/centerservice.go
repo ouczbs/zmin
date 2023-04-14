@@ -2,6 +2,7 @@ package center
 
 import (
 	"github.com/ouczbs/zmin/component/base"
+	"github.com/ouczbs/zmin/engine/data/zconf"
 	"github.com/ouczbs/zmin/engine/net/znet"
 )
 
@@ -18,7 +19,7 @@ func (service *UCenterService) Run() {
 	service.InitConfig()
 	service.initService()
 	go service.MessageLoop()
-	service.ConnectToVersion()
+	service.MakeOwnerProxy(zconf.COMPONENT_TYPE_VERSION)
 	znet.ServeTCPForever(service.Config.ListenAddr, service)
 }
 func (service *UCenterService) initService() {

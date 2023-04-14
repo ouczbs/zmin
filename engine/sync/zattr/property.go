@@ -10,9 +10,9 @@ import (
 )
 
 const (
-	_MT_SYNC_PROXY_PROPERTY = zconf.MT_SYNC_PROXY_PROPERTY
+	_MT_SYNC_PROXY_PROPERTY = zconf.CMD_SYNC_PROXY_PROPERTY
 	_MT_SET_REMOTE_PROPERTY = _MT_SYNC_PROXY_PROPERTY
-	_MT_TO_ALL              = zconf.MT_TO_ALL
+	_MT_TO_ALL              = 1
 )
 const (
 	Property_Type_INT32 = 1 + iota

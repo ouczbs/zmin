@@ -3,6 +3,7 @@ package version
 import (
 	"github.com/ouczbs/zmin/component/base"
 	"github.com/ouczbs/zmin/engine/core/zclass"
+	"github.com/ouczbs/zmin/engine/core/zutil"
 	"github.com/ouczbs/zmin/engine/data/zconf"
 	"github.com/ouczbs/zmin/engine/net/zmessage"
 	"github.com/ouczbs/zmin/engine/net/znet"
@@ -21,13 +22,11 @@ type (
 	TComponentId = zconf.TComponentId
 	TSequence    = zconf.TSequence
 	TMessageType = zconf.TMessageType
-
-	TProxyMap = map[TComponentId]*UClientProxy
 )
 
 var (
+	clientID      = zutil.NewSequence()
 	reqHandleMaps = make(map[TCmd]FRequestHandle)
-
-	loginProxyMaps  = make(TProxyMap)
-	centerProxyMaps = make(TProxyMap)
+	centerMaps    = make(map[TComponentId]*UClientProxy)
+	loginList     []*UClientProxy
 )

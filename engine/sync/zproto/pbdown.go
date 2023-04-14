@@ -12,6 +12,24 @@ var (
 	CommandListName = zconf.CommandList_name
 )
 
+func NewRequest(wrap *UWrapMessage, pb IReflectMessage) *URequest {
+	request := zmessage.NewRequest(_CMD_INVALID, _MT_INVALID, pb)
+	request.Request = wrap.Request
+	return request
+}
+func NewPbMessage(cmd TCmd) (IReflectMessage, error) {
+	messageType := pbMessageTypes[cmd]
+	if messageType != nil {
+		return messageType.New().Interface(), nil
+	}
+	pbName := CommandListName[cmd]
+	messageType, err := protoregistry.GlobalTypes.FindMessageByName(protoreflect.FullName(pbName))
+	if err != nil {
+		return nil, err
+	}
+	pbMessageTypes[cmd] = messageType
+	return messageType.New().Interface(), err
+}
 func PbMessageHandle(proxy *UClientProxy, packet *UPacket, cmd TCmd) {
 	wrapBytes := packet.MessagePayload()
 	wrapMessage := &UWrapMessage{}
@@ -20,28 +38,9 @@ func PbMessageHandle(proxy *UClientProxy, packet *UPacket, cmd TCmd) {
 	if cmd == 0 || (handle == nil && globalHandle == nil) {
 		return
 	}
-	pbMessage, _ := newPbMessage(cmd)
-	request := GetRequestMessage(wrapMessage, pbMessage)
+	pbMessage, _ := NewPbMessage(cmd)
+	Unmarshal(wrapMessage.Content, pbMessage)
+	request := NewRequest(wrapMessage, pbMessage)
 	proxy.Then(handle, request).Then(globalHandle, request)
-}
-
-func GetRequestMessage(wrap *UWrapMessage, message IReflectMessage) *URequest {
-	Unmarshal(wrap.Content, message)
-	request := zmessage.NewRequest(_CMD_INVALID, _MT_INVALID, message)
-	request.Code = wrap.Code
-	request.Next = true
-	return request
-}
-func newPbMessage(cmd TCmd) (IReflectMessage, error) {
-	messageType := pbMessageTypes[cmd]
-	if messageType != nil {
-		return messageType.New().Interface(), nil
-	}
-	pbName := CommandListName[int32(cmd)]
-	messageType, err := protoregistry.GlobalTypes.FindMessageByName(protoreflect.FullName(pbName))
-	if err != nil {
-		return nil, err
-	}
-	pbMessageTypes[cmd] = messageType
-	return messageType.New().Interface(), err
+	request.Release()
 }

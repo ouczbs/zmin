@@ -15,15 +15,21 @@ type (
 	UPacket        = zmessage.UPacket
 	FRequestHandle = znet.FRequestHandle
 
-	TCmd         = zconf.TCmd
-	TMessageType = zconf.TMessageType
-	TComponentId = zconf.TComponentId
+	TCmd           = zconf.TCmd
+	TMessageType   = zconf.TMessageType
+	TComponentId   = zconf.TComponentId
+	TComponentType = zconf.TComponentType
 )
 
 var (
+	ownerType     = TComponentType(zconf.COMPONENT_TYPE_VERSION)
 	reqHandleMaps = make(map[TCmd]FRequestHandle)
-	centerProxy   *UClientProxy
 
-	clientProxyMaps = make(map[TComponentId]*UClientProxy)
-	gameMessageMaps = make(map[TMessageType]*UClientProxy)
+	clientMaps = make(map[TComponentId]*UClientProxy)
+)
+
+const (
+	LoginType_Password = iota
+	LoginType_Email
+	LoginType_Phone
 )

@@ -10,7 +10,6 @@ type (
 	TCmd           = int32
 	TCallId        = int32
 	TMessageType   = uint16
-	TCode          = int32
 	TComponentId   = int32
 	TComponentType = int32
 )

@@ -9,7 +9,6 @@ import (
 )
 
 type (
-	TCode = zconf.TCode
 	TCmd  = zconf.TCmd
 	TEnum = zconf.TEnum
 

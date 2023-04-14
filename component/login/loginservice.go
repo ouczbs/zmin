@@ -21,7 +21,7 @@ func (service *ULoginService) Run() {
 	service.InitConfig()
 	service.initService()
 	go service.MessageLoop()
-	service.ConnectToCenter()
+	service.MakeOwnerProxy(ownerType)
 	znet.ServeTCPForever(service.Config.ListenAddr, service)
 }
 func (service *ULoginService) initService() {
@@ -30,7 +30,7 @@ func (service *ULoginService) initService() {
 func (service *ULoginService) NewTcpConnection(conn net.Conn) {
 	proxy := znet.NewClientProxy(service, conn)
 	id := zutil.IncSequence()
-	clientProxyMaps[id] = proxy
+	clientMaps[id] = proxy
 	proxy.SetProperty(zattr.Int32ComponentId, int32(id))
 	proxy.Serve()
 }

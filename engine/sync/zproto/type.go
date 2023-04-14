@@ -11,7 +11,6 @@ import (
 
 type (
 	TCallId      = zconf.TCallId
-	TCode        = zconf.TCode
 	TCmd         = zconf.TCmd
 	TEnum        = zconf.TEnum
 	TMessageType = zconf.TMessageType

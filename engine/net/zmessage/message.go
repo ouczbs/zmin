@@ -29,5 +29,6 @@ func (message *UMessage) Release() {
 	message.isReleased = true
 	message.Proxy = nil
 	message.Packet.Release()
+	message.Packet = nil
 	messagePool.Push(message)
 }

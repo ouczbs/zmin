@@ -7,7 +7,6 @@ import (
 )
 
 type (
-	TCode        = zconf.TCode
 	TSize        = zconf.TSize
 	TComponentId = zconf.TComponentId
 	TMessageType = zconf.TMessageType

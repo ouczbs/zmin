@@ -22,16 +22,15 @@ type (
 	TSequence    = zconf.TSequence
 	TMessageType = zconf.TMessageType
 
-	TProxyMap = map[TComponentId]*UClientProxy
+	TProxyMap      = map[TComponentId]*UClientProxy
+	TComponentType = zconf.TComponentType
 )
 
 var (
+	ownerType     = TComponentType(zconf.COMPONENT_TYPE_VERSION)
 	reqHandleMaps = make(map[TCmd]FRequestHandle)
 
-	versionProxy *UClientProxy
-
 	gateProxyMaps       = make(TProxyMap)
-	loginProxyMaps      = make(TProxyMap)
 	gameProxyMaps       = make(TProxyMap)
 	dispatcherProxyMaps = make(TProxyMap)
 )

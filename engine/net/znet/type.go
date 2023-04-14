@@ -12,7 +12,6 @@ import (
 type (
 	TSequence    = zconf.TSequence
 	TSize        = zconf.TSize
-	TCode        = zconf.TCode
 	TCmd         = zconf.TCmd
 	TEnum        = zconf.TEnum
 	TComponentId = zconf.TComponentId

@@ -32,7 +32,6 @@ func RequestMessage(proxy *UClientProxy, request *URequest, handle FRequestHandl
 	sequence := zutil.IncSequence()
 	wrap := &UWrapMessage{
 		Request: sequence,
-		Code:    request.Code,
 	}
 	proxy.ReqHandleMaps[sequence] = handle
 	return sendPbMessage(proxy, request, wrap)
@@ -40,15 +39,12 @@ func RequestMessage(proxy *UClientProxy, request *URequest, handle FRequestHandl
 func ResponseMessage(proxy *UClientProxy, request *URequest) error {
 	wrap := &UWrapMessage{
 		Response: request.Request,
-		Code:     request.Code,
 	}
 	return sendPbMessage(proxy, request, wrap)
 }
 func MakePbMessagePacket(request *URequest) *UPacket {
 	packet := zmessage.NewPacket()
-	wrap := &UWrapMessage{
-		Code: request.Code,
-	}
+	wrap := &UWrapMessage{}
 	packet.WriteMessageType(request.MessageType)
 	packet.WriteMessageCmd(request.Cmd)
 	out, err := Marshal(request.ProtoMessage)

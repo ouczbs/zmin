@@ -1,8 +1,8 @@
 package zmodel
 
 type FService struct {
-	Id         TComponentId
-	Type       TComponentType
+	Id         int32
+	Type       int32
 	ListenAddr string
 	OwnerAddr  string
 	Path       string

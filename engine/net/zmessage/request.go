@@ -6,7 +6,6 @@ var (
 
 type URequest struct {
 	ProtoMessage IReflectMessage
-	Code         TCode
 	Next         bool
 	Id           TComponentId
 	// Request
@@ -30,5 +29,13 @@ func (request *URequest) Release() {
 		return
 	}
 	request.isReleased = true
+	request.ProtoMessage = nil
 	requestPool.Push(request)
+}
+func (request *URequest) ReMake(cmd TCmd, messageType TMessageType, message IReflectMessage) {
+	request.isReleased = false
+	request.Next = true
+	request.Cmd = cmd
+	request.ProtoMessage = message
+	request.MessageType = messageType
 }

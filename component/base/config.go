@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"flag"
 	"os"
-	"path"
 	"path/filepath"
 	"runtime"
 )
@@ -28,7 +27,7 @@ var (
 func LoadServiceFile(serviceFile string) {
 	_, curPath, _, ok := runtime.Caller(0)
 	if ok {
-		AppPath = path.Dir(filepath.Join(curPath, "../../"))
+		AppPath = filepath.Join(curPath, "../../")
 	}
 	appConfigPath := filepath.Join(AppPath, "config", serviceFile)
 	bytes, _ := os.ReadFile(appConfigPath)

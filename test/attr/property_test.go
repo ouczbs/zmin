@@ -27,7 +27,6 @@ func TestMarsh(t *testing.T) {
 	p := &UProperty{}
 	p.property = make(map[TEnum]interface{})
 	p.SetProperty(zattr.StringListenAddr, string("127.0.0.1:11111"))
-	p.SetProperty(zattr.BoolIsLoadedService, false)
 	p.SetProperty(zattr.Int32ComponentId, int32(2))
 
 	b1 := "127.0.0.1:"
